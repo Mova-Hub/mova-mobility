@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://via.placeholder.com/150x150?text=Mova+Logo" alt="Mova Mobility Logo" width="120" height="120">
+  <img src="public/assets/images/logo/logo.png" alt="Mova Mobility Logo" width="120" height="120">
   
   <h1>🚍 Mova Mobility</h1>
   <p><strong>Simplifier et révolutionner l'accès aux transports en commun.</strong></p>
