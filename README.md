@@ -1,12 +1,41 @@
-# React + Vite
+<div align="center">
+  <img src="https://via.placeholder.com/150x150?text=Mova+Logo" alt="Mova Mobility Logo" width="120" height="120">
+  
+  <h1>🚍 Mova Mobility</h1>
+  <p><strong>Simplifier et révolutionner l'accès aux transports en commun.</strong></p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License">
+</div>
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 À propos du projet
 
-## Expanding the ESLint configuration
+**Mova Mobility** est une startup innovante née d'une vision simple : rendre les transports publics plus accessibles, fiables et fluides pour tous. Notre plateforme web et mobile permet aux usagers de planifier facilement leurs trajets, d'acheter leurs titres de transport et de recevoir des mises à jour en temps réel, le tout depuis une interface moderne et intuitive.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+> *Notre mission : Connecter les individus à leur ville grâce à une mobilité intelligente et partagée.*
+
+---
+
+## ✨ Fonctionnalités clés
+
+* 🗺️ **Planification d'itinéraires intelligente :** Trouvez le trajet le plus rapide combinant bus, métro, tramway ou vélos en libre-service.
+* ⏱️ **Horaires en temps réel :** Fini les longues attentes à l'arrêt, suivez votre transport en direct sur la carte.
+* 🎫 **Billetterie intégrée :** Achetez, stockez et validez vos tickets de transport directement depuis votre smartphone.
+* ⚠️ **Alertes trafic :** Soyez informé instantanément des perturbations, grèves ou déviations.
+* ♿ **Accessibilité :** Options de filtrage pour des itinéraires adaptés aux personnes à mobilité réduite (PMR).
+
+---
+
+## 🛠️ Technologies utilisées
+
+*(Note : Ajuste cette section selon votre véritable pile technologique)*
+
+* **Frontend :** React.js / Next.js
+* **Styling :** Tailwind CSS
+* **Backend :** Laravel
+* **Base de données :** PostgreSQL
+* **Cartographie :** Mapbox API / Google Maps API
+
+
