@@ -56,7 +56,7 @@ function Contact() {
               <div className="d-flex align-items-start gap-3" data-aos="fade-up" data-aos-delay="200">
                 <div className="icon d-block"><i className="bi bi-geo-alt"></i></div>
                 <span><span className="d-block">Adresse Congo</span>
-                  <address className="fw-bold">Av des 3 martyrs, Brazzaville, Congo Brazzaville</address></span>
+                  <address className="fw-bold">1er étage Immeuble Monte christo, Rond point de la Gare, Brazzaville, République du Congo</address></span>
               </div>
 
             </div>

@@ -82,7 +82,7 @@ function Footer() {
               <div className="col-md-6 col-lg-4 mb-4 mb-lg-0 quick-contact">
                 <h3 className="mb-3">Contact</h3>
                 <p className="d-flex mb-3"><i className="bi bi-geo-alt-fill me-3"></i><span>74 / 80 Rue Roque de Fillol, 92800 Puteaux, France</span></p>
-                <p className="d-flex mb-3"><i className="bi bi-geo-alt-fill me-3"></i><span>Av des 3 martyrs, Brazzaville, Congo Brazzaville</span></p>
+                <p className="d-flex mb-3"><i className="bi bi-geo-alt-fill me-3"></i><span>1er étage Immeuble Monte christo, Rond point de la Gare, Brazzaville, République du Congo</span></p>
                 <a className="d-flex mb-3" href="mailto:contact@mova-mobility.com"><i className="bi bi-envelope-fill me-3"></i><span>contact@mova-mobility.com</span></a>
                 <a className="d-flex mb-3" href="tel://+242067633232"><i className="bi bi-telephone-fill me-3"></i><span>+242 06 763 3232</span></a>
               </div>
