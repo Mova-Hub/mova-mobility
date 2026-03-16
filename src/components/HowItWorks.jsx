@@ -10,8 +10,8 @@ function HowItWorks() {
             <div className="row mb-5">
               <div className="col-md-6 text-center mx-auto">
                 <span className="subtitle text-uppercase mb-3" data-aos="fade-up" data-aos-delay="0">Comment ça marche</span>
-                <h2 data-aos="fade-up" data-aos-delay="100">Réservez Votre Bus en Toute Simplicité</h2>
-                <p data-aos="fade-up" data-aos-delay="200">Avec BusAccess de Móva Mobility, organiser le transport pour vos événements est rapide et sans stress. Suivez ces étapes pour réserver votre bus :</p>
+                <h2 className="fw-semibold text-dark mova-title" data-aos="fade-up" data-aos-delay="100">Réservez Votre Bus en Toute Simplicité</h2>
+                <p className="text-body mova-subtitle mx-auto" data-aos="fade-up" data-aos-delay="200">Avec BusAccess de Móva Mobility, organiser le transport pour vos événements est rapide et sans stress. Suivez ces étapes pour réserver votre bus :</p>
               </div>
             </div>
             <div className="row g-md-5">
