@@ -12,6 +12,7 @@ import ReservationModal from './components/ReservationModal';
 import Home from './pages/Home';
 import Careers from './pages/Careers';
 import SEO from './components/SEO';
+import Contact from './pages/Contact';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -46,6 +47,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/carrieres" element={<Careers />} />
+          <Route path="/contact" element={<Contact />} />
           {/* <Route path="/a-propos" element={<AboutPage />} /> */}
           
           {/* Route 404 (Page non trouvée) */}
