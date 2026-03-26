@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -30,6 +31,11 @@ const Contact = () => {
 
   return (
     <div className="bg-white contact-page">
+        
+      <SEO 
+        title="Contactez nous" 
+        description="Découvrez Mova, l'application qui révolutionne vos trajets en ville. Bus, itinéraires, et Mova Pass."
+      />
       {/* --- Hero Section --- */}
       <section className="py-25 bg-light border-bottom">
         <div className="container">
@@ -129,7 +135,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         className="form-control custom-input" 
-                        placeholder="John Doe" 
+                        placeholder="Arden BOUET" 
                         required 
                       />
                     </div>
@@ -141,7 +147,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         className="form-control custom-input" 
-                        placeholder="john@company.com" 
+                        placeholder="arden@company.com" 
                         required 
                       />
                     </div>

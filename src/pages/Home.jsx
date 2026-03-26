@@ -14,7 +14,7 @@ function Home() {
   return (
     <>
       <SEO 
-        title="Parce que se déplacer, c'est exister" 
+        title="Transport et Mobilité Urbaine" 
         description="Découvrez Mova, l'application qui révolutionne vos trajets en ville. Bus, itinéraires, et Mova Pass."
       />
       <Hero />

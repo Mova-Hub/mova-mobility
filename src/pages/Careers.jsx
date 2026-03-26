@@ -432,7 +432,7 @@ function Careers() {
                           <input 
                             type="text" 
                             required
-                            placeholder="Ex: Dominique Dos Santos"
+                            placeholder="Ex: Arden BOUET"
                             className="w-full bg-gray-50 border border-gray-200 text-gray-900 py-3 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--bs-primary,#0d6efd)]/20 focus:border-[var(--bs-primary,#0d6efd)] transition-all placeholder-gray-400"
                           />
                         </div>
@@ -442,7 +442,7 @@ function Careers() {
                           <input 
                             type="email" 
                             required
-                            placeholder="dominique@exemple.com"
+                            placeholder="ardenbouet@exemple.com"
                             className="w-full bg-gray-50 border border-gray-200 text-gray-900 py-3 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--bs-primary,#0d6efd)]/20 focus:border-[var(--bs-primary,#0d6efd)] transition-all placeholder-gray-400"
                           />
                         </div>
