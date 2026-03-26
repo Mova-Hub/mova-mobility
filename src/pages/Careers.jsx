@@ -315,206 +315,206 @@ function Careers() {
 
       </div>
 
-      {/* MODALE DE DÉTAILS DE L'OFFRE & CANDIDATURE (Unchanged) */}
-      {selectedJob && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6">
-          <div 
-            className="absolute inset-0 transition-opacity bg-gray-900/70 backdrop-blur-sm"
-            onClick={() => setSelectedJob(null)}
-          ></div>
+{/* MODALE DE DÉTAILS DE L'OFFRE & CANDIDATURE */}
+{selectedJob && (
+  /* Modified: p-0 on mobile for edge-to-edge fullscreen */
+  <div className="fixed inset-0 z-[200] flex items-center justify-center p-0 sm:p-6">
+    <div 
+      className="absolute inset-0 transition-opacity bg-gray-900/70 backdrop-blur-sm"
+      onClick={() => setSelectedJob(null)}
+    ></div>
 
-          <div 
-            className="relative bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col z-10 animate-fade-in-up overflow-hidden"
-            role="dialog"
-            aria-modal="true"
-          >
-            {/* Header Fixe */}
-            <div className="flex items-start justify-between px-6 py-5 bg-white border-b border-gray-100 sm:px-10 sm:py-6 shrink-0">
-              <div>
-                <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                  {selectedJob.title}
-                </h2>
-                <div className="flex flex-wrap items-center gap-3 text-sm font-medium text-gray-600 sm:gap-4">
-                  <span className="flex items-center gap-1.5"><i className="bi bi-geo-alt text-[var(--bs-primary,#0d6efd)]"></i> {selectedJob.location}, {selectedJob.country}</span>
-                  <span className="w-1.5 h-1.5 bg-gray-300 rounded-full"></span>
-                  <span className="flex items-center gap-1.5"><i className="bi bi-building text-[var(--bs-primary,#0d6efd)]"></i> {selectedJob.workMode}</span>
-                  <span className="w-1.5 h-1.5 bg-gray-300 rounded-full"></span>
-                  <span className="flex items-center gap-1.5"><i className="bi bi-clock text-[var(--bs-primary,#0d6efd)]"></i> {selectedJob.contractType}</span>
-                </div>
-              </div>
-              <button 
-                onClick={() => setSelectedJob(null)}
-                className="flex items-center justify-center w-10 h-10 text-gray-400 transition-colors rounded-full hover:text-gray-900 bg-gray-50 hover:bg-gray-200 focus:outline-none"
-              >
-                <i className="text-xl leading-none bi bi-x-lg"></i>
-              </button>
-            </div>
-
-            {/* Corps Scrollable */}
-            <div className="flex-grow overflow-y-auto bg-white custom-scrollbar">
-              <div className="p-6 sm:p-10">
-                
-                {/* Section : Détails du poste */}
-                <div className="prose prose-gray max-w-none">
-                  <div className="mb-10">
-                    <h3 className="mb-4 text-xl font-bold text-gray-900">À propos du rôle</h3>
-                    <p className="text-base leading-relaxed text-gray-600">{selectedJob.shortDesc}</p>
-                  </div>
-
-                  <div className="grid grid-cols-1 gap-10 mb-10 md:grid-cols-2">
-                    <div>
-                      <h3 className="mb-4 text-xl font-bold text-gray-900">Vos responsabilités</h3>
-                      <ul className="space-y-4">
-                        {selectedJob.responsibilities.map((resp, idx) => (
-                          <li key={idx} className="flex items-start text-gray-600">
-                            <i className="bi bi-check2 text-[var(--bs-primary,#0d6efd)] mt-1 mr-3 text-lg leading-none font-bold"></i>
-                            <span className="leading-relaxed">{resp}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="mb-4 text-xl font-bold text-gray-900">Profil recherché</h3>
-                      <ul className="space-y-4">
-                        {selectedJob.requirements.map((req, idx) => (
-                          <li key={idx} className="flex items-start text-gray-600">
-                            <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2.5 mr-3 flex-shrink-0"></span>
-                            <span className="leading-relaxed">{req}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="p-6 mb-12 border border-gray-100 bg-gray-50 rounded-2xl">
-                    <h3 className="flex items-center gap-2 mb-4 text-xl font-bold text-gray-900">
-                      <i className="bi bi-stars text-[var(--bs-primary,#0d6efd)]"></i> Ce que nous offrons
-                    </h3>
-                    <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      {selectedJob.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-center text-gray-700 font-medium text-sm border-l-2 border-[var(--bs-primary,#0d6efd)]/30 pl-3">
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <hr className="mb-12 border-gray-200" />
-
-                {/* Section : Formulaire de candidature */}
-                <div id="application-form">
-                  <div className="mb-10 text-center">
-                    <h3 className="mb-2 text-2xl font-bold text-gray-900">Postuler pour ce poste</h3>
-                    <p className="text-gray-500">Remplissez le formulaire ci-dessous et notre équipe vous recontactera rapidement.</p>
-                  </div>
-
-                  {hasSubmitted ? (
-                    <div className="p-8 text-center text-green-800 border border-green-200 bg-green-50 rounded-2xl animate-fade-in-up">
-                      <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-3xl text-green-600 bg-green-100 rounded-full">
-                        <i className="bi bi-check-lg"></i>
-                      </div>
-                      <h4 className="mb-2 text-2xl font-bold">Candidature envoyée !</h4>
-                      <p className="text-green-700">Merci de votre intérêt pour Mova. Nous examinerons votre profil avec attention.</p>
-                      <button 
-                        onClick={() => setSelectedJob(null)}
-                        className="mt-6 px-6 py-2.5 bg-white border border-green-300 text-green-700 font-semibold rounded-xl hover:bg-green-50 transition-colors"
-                      >
-                        Fermer la fenêtre
-                      </button>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmitApplication} className="space-y-6">
-                      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                        {/* Nom */}
-                        <div>
-                          <label className="block mb-2 text-sm font-semibold text-gray-900">Nom complet *</label>
-                          <input 
-                            type="text" 
-                            required
-                            placeholder="Ex: Arden BOUET"
-                            className="w-full bg-gray-50 border border-gray-200 text-gray-900 py-3 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--bs-primary,#0d6efd)]/20 focus:border-[var(--bs-primary,#0d6efd)] transition-all placeholder-gray-400"
-                          />
-                        </div>
-                        {/* Email */}
-                        <div>
-                          <label className="block mb-2 text-sm font-semibold text-gray-900">Adresse Email *</label>
-                          <input 
-                            type="email" 
-                            required
-                            placeholder="ardenbouet@exemple.com"
-                            className="w-full bg-gray-50 border border-gray-200 text-gray-900 py-3 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--bs-primary,#0d6efd)]/20 focus:border-[var(--bs-primary,#0d6efd)] transition-all placeholder-gray-400"
-                          />
-                        </div>
-                      </div>
-
-                      {/* LinkedIn */}
-                      <div>
-                        <label className="block mb-2 text-sm font-semibold text-gray-900">Profil LinkedIn (Optionnel)</label>
-                        <div className="relative">
-                          <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
-                            <i className="bi bi-linkedin"></i>
-                          </span>
-                          <input 
-                            type="url" 
-                            placeholder="https://linkedin.com/in/votre-profil"
-                            className="w-full bg-gray-50 border border-gray-200 text-gray-900 py-3 pl-10 pr-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--bs-primary,#0d6efd)]/20 focus:border-[var(--bs-primary,#0d6efd)] transition-all placeholder-gray-400"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Upload CV */}
-                      <div>
-                        <label className="block mb-2 text-sm font-semibold text-gray-900">Curriculum Vitae (CV) *</label>
-                        <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-[var(--bs-primary,#0d6efd)] hover:bg-[var(--bs-primary,#0d6efd)]/5 transition-colors cursor-pointer relative group">
-                          <div className="space-y-1 text-center">
-                            <i className="bi bi-cloud-arrow-up text-3xl text-gray-400 group-hover:text-[var(--bs-primary,#0d6efd)] transition-colors"></i>
-                            <div className="flex justify-center text-sm text-gray-600">
-                              <label htmlFor="file-upload" className="relative cursor-pointer bg-transparent rounded-md font-semibold text-[var(--bs-primary,#0d6efd)] focus-within:outline-none hover:underline">
-                                <span>Télécharger un fichier</span>
-                                <input id="file-upload" name="file-upload" type="file" className="sr-only" required accept=".pdf,.doc,.docx" />
-                              </label>
-                              <p className="pl-1">ou glisser-déposer</p>
-                            </div>
-                            <p className="text-xs text-gray-500">PDF, DOCX jusqu'à 5MB</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Lettre de motivation */}
-                      <div>
-                        <label className="block mb-2 text-sm font-semibold text-gray-900">Lettre de motivation / Message *</label>
-                        <textarea 
-                          rows="4"
-                          required
-                          placeholder="Parlez-nous de vous et de ce qui vous motive à rejoindre Mova..."
-                          className="w-full bg-gray-50 border border-gray-200 text-gray-900 py-3 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--bs-primary,#0d6efd)]/20 focus:border-[var(--bs-primary,#0d6efd)] transition-all placeholder-gray-400 resize-y"
-                        ></textarea>
-                      </div>
-
-                      {/* Bouton Soumettre */}
-                      <div className="flex justify-end pt-4">
-                        <button 
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="w-full sm:w-auto px-8 py-3.5 text-base font-bold text-white bg-[var(--bs-primary,#0d6efd)] rounded-full hover:brightness-110 transition-all flex justify-center items-center gap-2 shadow-md disabled:opacity-70 disabled:cursor-not-allowed border-none"
-                        >
-                          {isSubmitting ? (
-                            <><span className="w-5 h-5 border-2 rounded-full border-white/30 border-t-white animate-spin"></span> Envoi en cours...</>
-                          ) : (
-                            <>Envoyer ma candidature <i className="text-sm bi bi-send-fill"></i></>
-                          )}
-                        </button>
-                      </div>
-                    </form>
-                  )}
-                </div>
-
-              </div>
-            </div>
+    <div 
+      /* Modified: 
+         - h-full (mobile) vs max-h-[90vh] (desktop)
+         - rounded-none (mobile) vs rounded-3xl (desktop)
+      */
+      className="relative bg-white rounded-none sm:rounded-3xl shadow-2xl w-full max-w-4xl h-full sm:max-h-[90vh] flex flex-col z-10 animate-fade-in-up overflow-hidden"
+      role="dialog"
+      aria-modal="true"
+    >
+      {/* Header Fixe */}
+      <div className="flex items-start justify-between px-6 py-5 bg-white border-b border-gray-100 sm:px-10 sm:py-6 shrink-0">
+        <div className="pr-8"> {/* Added padding-right to prevent text overlapping close button on small screens */}
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+            {selectedJob.title}
+          </h2>
+          <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-gray-600 sm:text-sm sm:gap-4">
+            <span className="flex items-center gap-1.5"><i className="bi bi-geo-alt text-[var(--bs-primary,#0d6efd)]"></i> {selectedJob.location}</span>
+            <span className="hidden w-1.5 h-1.5 bg-gray-300 rounded-full sm:block"></span>
+            <span className="flex items-center gap-1.5"><i className="bi bi-building text-[var(--bs-primary,#0d6efd)]"></i> {selectedJob.workMode}</span>
+            <span className="hidden w-1.5 h-1.5 bg-gray-300 rounded-full sm:block"></span>
+            <span className="flex items-center gap-1.5"><i className="bi bi-clock text-[var(--bs-primary,#0d6efd)]"></i> {selectedJob.contractType}</span>
           </div>
         </div>
-      )}
+        
+        {/* Close Button: Fixed position on mobile is often better for UX */}
+        <button 
+          onClick={() => setSelectedJob(null)}
+          className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-gray-400 transition-colors rounded-full hover:text-gray-900 bg-gray-50 hover:bg-gray-200 focus:outline-none"
+        >
+          <i className="text-xl leading-none bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      {/* Corps Scrollable */}
+      <div className="flex-grow overflow-y-auto bg-white custom-scrollbar">
+        <div className="p-6 sm:p-10">
+          
+          {/* Section : Détails du poste */}
+          <div className="prose prose-gray max-w-none">
+            <div className="mb-10">
+              <h3 className="mb-4 text-lg font-bold text-gray-900 sm:text-xl">À propos du rôle</h3>
+              <p className="text-sm leading-relaxed text-gray-600 sm:text-base">{selectedJob.shortDesc}</p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-10 mb-10 md:grid-cols-2">
+              <div>
+                <h3 className="mb-4 text-lg font-bold text-gray-900 sm:text-xl">Vos responsabilités</h3>
+                <ul className="space-y-4">
+                  {selectedJob.responsibilities.map((resp, idx) => (
+                    <li key={idx} className="flex items-start text-sm text-gray-600 sm:text-base">
+                      <i className="bi bi-check2 text-[var(--bs-primary,#0d6efd)] mt-1 mr-3 text-lg leading-none font-bold"></i>
+                      <span className="leading-relaxed">{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="mb-4 text-lg font-bold text-gray-900 sm:text-xl">Profil recherché</h3>
+                <ul className="space-y-4">
+                  {selectedJob.requirements.map((req, idx) => (
+                    <li key={idx} className="flex items-start text-sm text-gray-600 sm:text-base">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="leading-relaxed">{req}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="p-5 mb-12 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
+              <h3 className="flex items-center gap-2 mb-4 text-lg font-bold text-gray-900 sm:text-xl">
+                <i className="bi bi-stars text-[var(--bs-primary,#0d6efd)]"></i> Ce que nous offrons
+              </h3>
+              <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {selectedJob.benefits.map((benefit, idx) => (
+                  <li key={idx} className="flex items-center text-gray-700 font-medium text-xs sm:text-sm border-l-2 border-[var(--bs-primary,#0d6efd)]/30 pl-3">
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <hr className="mb-12 border-gray-200" />
+
+          {/* Section : Formulaire de candidature */}
+          <div id="application-form" className="pb-10 sm:pb-0"> {/* Added padding bottom for mobile scroll clearance */}
+            <div className="mb-10 text-center">
+              <h3 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">Postuler pour ce poste</h3>
+              <p className="text-sm text-gray-500">Remplissez le formulaire ci-dessous et notre équipe vous recontactera rapidement.</p>
+            </div>
+
+            {hasSubmitted ? (
+              <div className="p-8 text-center text-green-800 border border-green-200 bg-green-50 rounded-2xl animate-fade-in-up">
+                <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-3xl text-green-600 bg-green-100 rounded-full">
+                  <i className="bi bi-check-lg"></i>
+                </div>
+                <h4 className="mb-2 text-xl font-bold sm:text-2xl">Candidature envoyée !</h4>
+                <p className="text-sm text-green-700 sm:text-base">Merci de votre intérêt pour Mova. Nous examinerons votre profil avec attention.</p>
+                <button 
+                  onClick={() => setSelectedJob(null)}
+                  className="mt-6 px-6 py-2.5 bg-white border border-green-300 text-green-700 font-semibold rounded-xl hover:bg-green-50 transition-colors"
+                >
+                  Fermer la fenêtre
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmitApplication} className="space-y-6">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div>
+                    <label className="block mb-2 text-sm font-semibold text-gray-900">Nom complet *</label>
+                    <input 
+                      type="text" 
+                      required
+                      placeholder="Ex: Arden BOUET"
+                      className="w-full bg-gray-50 border border-gray-200 text-gray-900 py-3 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--bs-primary,#0d6efd)]/20 focus:border-[var(--bs-primary,#0d6efd)] transition-all placeholder-gray-400 text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label className="block mb-2 text-sm font-semibold text-gray-900">Adresse Email *</label>
+                    <input 
+                      type="email" 
+                      required
+                      placeholder="ardenbouet@exemple.com"
+                      className="w-full bg-gray-50 border border-gray-200 text-gray-900 py-3 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--bs-primary,#0d6efd)]/20 focus:border-[var(--bs-primary,#0d6efd)] transition-all placeholder-gray-400 text-sm"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block mb-2 text-sm font-semibold text-gray-900">Profil LinkedIn (Optionnel)</label>
+                  <div className="relative">
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
+                      <i className="bi bi-linkedin"></i>
+                    </span>
+                    <input 
+                      type="url" 
+                      placeholder="https://linkedin.com/in/votre-profil"
+                      className="w-full bg-gray-50 border border-gray-200 text-gray-900 py-3 pl-10 pr-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--bs-primary,#0d6efd)]/20 focus:border-[var(--bs-primary,#0d6efd)] transition-all placeholder-gray-400 text-sm"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block mb-2 text-sm font-semibold text-gray-900">Curriculum Vitae (CV) *</label>
+                  <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-[var(--bs-primary,#0d6efd)] hover:bg-[var(--bs-primary,#0d6efd)]/5 transition-colors cursor-pointer relative group">
+                    <div className="space-y-1 text-center">
+                      <i className="bi bi-cloud-arrow-up text-3xl text-gray-400 group-hover:text-[var(--bs-primary,#0d6efd)] transition-colors"></i>
+                      <div className="flex justify-center text-sm text-gray-600">
+                        <label htmlFor="file-upload" className="relative cursor-pointer bg-transparent rounded-md font-semibold text-[var(--bs-primary,#0d6efd)] focus-within:outline-none hover:underline">
+                          <span>Télécharger un fichier</span>
+                          <input id="file-upload" name="file-upload" type="file" className="sr-only" required accept=".pdf,.doc,.docx" />
+                        </label>
+                        <p className="hidden pl-1 sm:block">ou glisser-déposer</p>
+                      </div>
+                      <p className="text-xs text-gray-500">PDF, DOCX jusqu'à 5MB</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block mb-2 text-sm font-semibold text-gray-900">Lettre de motivation / Message *</label>
+                  <textarea 
+                    rows="4"
+                    required
+                    placeholder="Parlez-nous de vous..."
+                    className="w-full bg-gray-50 border border-gray-200 text-gray-900 py-3 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--bs-primary,#0d6efd)]/20 focus:border-[var(--bs-primary,#0d6efd)] transition-all placeholder-gray-400 resize-y text-sm"
+                  ></textarea>
+                </div>
+
+                <div className="flex justify-end pt-4">
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto px-8 py-3.5 text-base font-bold text-white bg-[var(--bs-primary,#0d6efd)] rounded-full hover:brightness-110 transition-all flex justify-center items-center gap-2 shadow-md disabled:opacity-70 disabled:cursor-not-allowed border-none"
+                  >
+                    {isSubmitting ? (
+                      <><span className="w-5 h-5 border-2 rounded-full border-white/30 border-t-white animate-spin"></span> Envoi...</>
+                    ) : (
+                      <>Envoyer ma candidature <i className="text-sm bi bi-send-fill"></i></>
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
 
       {/* STYLES PERSONNALISÉS */}
       <style dangerouslySetInnerHTML={{__html: `
