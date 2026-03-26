@@ -29,6 +29,10 @@ function SEO({
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+
+      {/* Balise pour demander à Google de ne pas traduire le nom de la marque */}
+      <meta name="google" content="notranslate" />
+      
     </Helmet>
   );
 }

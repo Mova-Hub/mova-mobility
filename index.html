@@ -11,12 +11,53 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Móva Mobility",
+        "url": "https://www.mova-mobility.com",
+        "logo": "https://www.mova-mobility.com/assets/images/logo.png",
+        "description": "Solution de mobilité agile en Afrique Centrale. Réservation de bus et Mova Pass.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Brazzaville", 
+          "addressCountry": "CG"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+242-06-763-3232",
+          "contactType": "customer service",
+          "availableLanguage": ["French", "English"]
+        },
+        "sameAs": [
+          "https://www.facebook.com/mova-mobility",
+          "https://www.linkedin.com/company/mova-mobility",
+          "https://www.instagram.com/mova-mobility"
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://www.mova-mobility.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.mova-mobility.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
     <script>
       (function() {
         const storedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-bs-theme', storedTheme);
       })();
     </script>
+
   </head>
   <body class="overflow-x-hidden">
     <div id="root"></div>
