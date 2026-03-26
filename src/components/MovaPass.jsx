@@ -11,7 +11,7 @@ function MovaPass() {
             <h2 className="fw-semibold text-dark mova-title">
               Une mobilité sans friction.
             </h2>
-            <p className="text-body mova-subtitle mx-auto">
+            <p className="text-black mova-subtitle mx-auto">
               Découvrez Mova Pass. Une seule application pour réserver, suivre vos trajets en temps réel et maîtriser votre budget avec nos forfaits mensuels.
             </p>
           </div>
@@ -39,7 +39,7 @@ function MovaPass() {
                 <i className="bi bi-calendar2-check mova-icon"></i>
                 <div>
                   <h5 className="fw-semibold text-dark mb-1">Pass Mensuels</h5>
-                  <p className="text-body mb-0">Trajets prédéfinis pour un budget maîtrisé.</p>
+                  <p className="text-black mb-0">Trajets prédéfinis pour un budget maîtrisé.</p>
                 </div>
               </div>
 
@@ -47,7 +47,7 @@ function MovaPass() {
                 <i className="bi bi-clock-history mova-icon"></i>
                 <div>
                   <h5 className="fw-semibold text-dark mb-1">Priorité à bord</h5>
-                  <p className="text-body mb-0">Confirmation rapide et accès prioritaire.</p>
+                  <p className="text-black mb-0">Confirmation rapide et accès prioritaire.</p>
                 </div>
               </div>
 
@@ -55,7 +55,7 @@ function MovaPass() {
                 <i className="bi bi-geo-alt mova-icon"></i>
                 <div>
                   <h5 className="fw-semibold text-dark mb-1">Suivi en direct</h5>
-                  <p className="text-body mb-0">Localisez votre transport instantanément.</p>
+                  <p className="text-black mb-0">Localisez votre transport instantanément.</p>
                 </div>
               </div>
 
@@ -63,7 +63,7 @@ function MovaPass() {
                 <i className="bi bi-credit-card mova-icon"></i>
                 <div>
                   <h5 className="fw-semibold text-dark mb-1">Paiement sécurisé</h5>
-                  <p className="text-body mb-0">Gérez vos abonnements directement via l'app.</p>
+                  <p className="text-black mb-0">Gérez vos abonnements directement via l'app.</p>
                 </div>
               </div>
 
