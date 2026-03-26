@@ -55,6 +55,7 @@ function Hero({ setShowModal }) {
                 <button 
                   onClick={() => setShowModal(true)}
                   className="px-8 py-3.5 text-base font-bold text-white bg-[var(--bs-primary,#0d6efd)] border-none rounded-full hover:brightness-110 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 group"
+                  style={{ borderRadius: '9999px' }}
                 >
                   Je réserve mon bus
                   <i className="transition-transform duration-300 bi bi-arrow-right group-hover:translate-x-1"></i>

@@ -2,17 +2,22 @@ import React from 'react';
 
 function MovaPass() {
   return (
-    <section className="mova-pass-section bg-white" id="movapass">
+    <section className="bg-white mova-pass-section" id="movapass">
       <div className="container">
         
         {/* En-tête */}
-        <div className="row justify-content-center text-center mova-header">
-          <div className="col-lg-8">
-            <h2 className="fw-semibold text-dark mova-title">
-              Une mobilité sans friction.
+        <div className="mb-5 text-center row justify-content-center pb-lg-4">
+          <div className="col-lg-7">
+            <div className="gap-2 mb-3 d-flex align-items-center justify-content-center" data-aos="fade-up">
+              <span className="px-3 py-1 rounded-pill fw-bold text-uppercase" style={{ backgroundColor: '#00592115', color: '#005921', fontSize: '0.75rem', letterSpacing: '1px' }}>
+                L'Application Mova Pass
+              </span>
+            </div>
+            <h2 className="mb-4 display-7 fw-semibold text-dark" data-aos="fade-up" data-aos-delay="100">
+              Une mobilité <span style={{ color: '#005921' }}>sans friction</span>.
             </h2>
-            <p className="text-black mova-subtitle mx-auto">
-              Découvrez Mova Pass. Une seule application pour réserver, suivre vos trajets en temps réel et maîtriser votre budget avec nos forfaits mensuels.
+            <p className="mx-auto text-black fs-5" data-aos="fade-up" data-aos-delay="200" style={{ maxWidth: '600px' }}>
+              Une seule interface pour réserver, suivre vos trajets et maîtriser votre budget avec nos forfaits intelligents.
             </p>
           </div>
         </div>
@@ -20,7 +25,7 @@ function MovaPass() {
         <div className="mova-content-wrapper">
           
           {/* Mockup (Gauche) - Fond dynamique utilisant votre couleur primaire */}
-          <div className="mova-mockup-container text-center">
+          <div className="text-center mova-mockup-container">
             <div className="mova-mockup-backdrop"></div>
             <img 
               src="/assets/images/mova-app-mockup.png" 
@@ -31,39 +36,39 @@ function MovaPass() {
 
           {/* Contenu & Fonctionnalités (Droite) */}
           <div className="mova-features-container">
-            <h3 className="fw-semibold text-dark mb-5">Tout ce dont vous avez besoin, dans votre poche.</h3>
+            <h3 className="mb-5 fw-semibold text-dark">Tout ce dont vous avez besoin, dans votre poche.</h3>
             
             <div className="mova-features-grid">
               
               <div className="mova-feature-item">
                 <i className="bi bi-calendar2-check mova-icon"></i>
                 <div>
-                  <h5 className="fw-semibold text-dark mb-1">Pass Mensuels</h5>
-                  <p className="text-black mb-0">Trajets prédéfinis pour un budget maîtrisé.</p>
+                  <h5 className="mb-1 fw-semibold text-dark">Pass Mensuels</h5>
+                  <p className="mb-0 text-black">Trajets prédéfinis pour un budget maîtrisé.</p>
                 </div>
               </div>
 
               <div className="mova-feature-item">
                 <i className="bi bi-clock-history mova-icon"></i>
                 <div>
-                  <h5 className="fw-semibold text-dark mb-1">Priorité à bord</h5>
-                  <p className="text-black mb-0">Confirmation rapide et accès prioritaire.</p>
+                  <h5 className="mb-1 fw-semibold text-dark">Priorité à bord</h5>
+                  <p className="mb-0 text-black">Confirmation rapide et accès prioritaire.</p>
                 </div>
               </div>
 
               <div className="mova-feature-item">
                 <i className="bi bi-geo-alt mova-icon"></i>
                 <div>
-                  <h5 className="fw-semibold text-dark mb-1">Suivi en direct</h5>
-                  <p className="text-black mb-0">Localisez votre transport instantanément.</p>
+                  <h5 className="mb-1 fw-semibold text-dark">Suivi en direct</h5>
+                  <p className="mb-0 text-black">Localisez votre transport instantanément.</p>
                 </div>
               </div>
 
               <div className="mova-feature-item">
                 <i className="bi bi-credit-card mova-icon"></i>
                 <div>
-                  <h5 className="fw-semibold text-dark mb-1">Paiement sécurisé</h5>
-                  <p className="text-black mb-0">Gérez vos abonnements directement via l'app.</p>
+                  <h5 className="mb-1 fw-semibold text-dark">Paiement sécurisé</h5>
+                  <p className="mb-0 text-black">Gérez vos abonnements directement via l'app.</p>
                 </div>
               </div>
 
@@ -74,7 +79,7 @@ function MovaPass() {
               <a href="#" className="mova-btn-store">
                 <i className="bi bi-apple fs-4"></i>
                 <div className="text-start lh-1">
-                  <small className="d-block mb-1">Télécharger dans l'</small>
+                  <small className="mb-1 d-block">Télécharger dans l'</small>
                   <span className="fw-bold fs-6">App Store</span>
                 </div>
               </a>
@@ -82,7 +87,7 @@ function MovaPass() {
               <a href="#" className="mova-btn-store">
                 <i className="bi bi-google-play fs-4"></i>
                 <div className="text-start lh-1">
-                  <small className="d-block mb-1">Disponible sur</small>
+                  <small className="mb-1 d-block">Disponible sur</small>
                   <span className="fw-bold fs-6">Google Play</span>
                 </div>
               </a>
