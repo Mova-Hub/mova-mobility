@@ -1,199 +1,231 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import SEO from '../components/SEO';
 
-function MovaPass() {
-  const features = [
-    { icon: "bi-calendar2-check", title: "Pass Mensuels", desc: "Forfaits adaptés à vos trajets fréquents." },
-    { icon: "bi-clock-history", title: "Priorité à bord", desc: "Confirmation rapide et accès prioritaire." },
-    { icon: "bi-geo-alt", title: "Suivi en direct", desc: "Localisez votre transport instantanément." },
-    { icon: "bi-credit-card", title: "Paiement sécurisé", desc: "Gérez vos abonnements via l'application." }
+const Counter = ({ end, duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const countRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      { threshold: 0.1 }
+    );
+    if (countRef.current) observer.observe(countRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    let start = 0;
+    const finalValue = parseInt(end.replace(/\s/g, ''), 10);
+    const totalFrames = 60;
+    const increment = finalValue / totalFrames;
+    const intervalTime = duration / totalFrames;
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= finalValue) {
+        setCount(finalValue);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, intervalTime);
+    return () => clearInterval(timer);
+  }, [isVisible, end, duration]);
+
+  return <span ref={countRef}>{count.toLocaleString().replace(/,/g, ' ')}</span>;
+};
+
+const About = () => {
+  const stats = [
+    { value: "200", suffix: "+", label: "Courses réalisées", delay: 100 },
+    { value: "2300", suffix: "", label: "Km parcourus", delay: 200 },
+    { value: "95", suffix: "%", label: "Satisfaction client", delay: 300 },
+    { value: "32", suffix: "+", label: "Abonnés", delay: 400 }
+  ];
+
+  const accomplishments = [
+    { 
+      title: "Pépite Congo 2024", 
+      desc: "Lauréat du programme d'accompagnement des startups innovantes.", 
+      category: "Prix", 
+      icon: "bi-trophy" 
+    },
+    { 
+      title: "Challenge Startupper", 
+      desc: "Finaliste du concours TotalEnergies pour l'innovation en mobilité.", 
+      category: "Challenge", 
+      icon: "bi-award" 
+    },
+    { 
+      title: "Tech Transition", 
+      desc: "Reconnaissance pour l'impact écologique et digital en zone urbaine.", 
+      category: "Certification", 
+      icon: "bi-patch-check" 
+    }
   ];
 
   return (
-    <section className="py-24 overflow-hidden bg-white mova-pass-section" id="movapass">
-      <div className="container">
-        
-        {/* Header */}
-        <div className="mb-5 text-center row justify-content-center pb-lg-5">
-          <div className="col-lg-7">
-            <div className="gap-2 mb-3 d-flex align-items-center justify-content-center" data-aos="fade-up">
-              <span className="px-3 py-1 rounded-pill fw-bold text-uppercase" style={{ backgroundColor: '#00592115', color: '#005921', fontSize: '0.75rem', letterSpacing: '1px' }}>
-                L'Écosystème Mova Pass
-              </span>
+    <main className="overflow-hidden bg-white about-page">
+      <SEO 
+        title="À Propos | Móva Mobility" 
+        description="Découvrez l'équipe et les succès de Móva Mobility, le leader de la mobilité intelligente en Afrique Centrale."
+      />
+
+      {/* --- 1. HERO: Airy & Bold --- */}
+      <section className="py-24 bg-white position-relative">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="mb-5 col-lg-6 mb-lg-0" data-aos="fade-up">
+              <span className="mb-3 tracking-widest text-success fw-bold text-uppercase small d-block">Notre Histoire</span>
+              <h1 className="mb-4 display-4 fw-black text-dark lh-sm">
+                L'Afrique mérite une mobilité de <span className="text-outline">classe mondiale</span>.
+              </h1>
+              <p className="text-muted fs-5 fw-light pe-lg-5">
+                Móva Mobility n'est pas seulement une application, c'est un engagement pour la dignité et l'efficacité des déplacements quotidiens.
+              </p>
             </div>
-            <h2 className="mb-4 display-5 fw-black text-dark" data-aos="fade-up" data-aos-delay="100">
-              Une mobilité <span style={{ color: '#005921' }}>sans friction</span>.
-            </h2>
-            <p className="mx-auto text-muted fs-5" data-aos="fade-up" data-aos-delay="200" style={{ maxWidth: '600px' }}>
-              Une seule interface pour réserver, suivre vos trajets et maîtriser votre budget avec nos forfaits intelligents.
-            </p>
-          </div>
-        </div>
-
-        <div className="row align-items-center g-5">
-          
-          {/* CREATIVE MOCKUP SIDE (Left) */}
-          <div className="order-2 col-lg-6 order-lg-1" data-aos="fade-right">
-            <div className="mova-screens-perspective">
-              {/* Decorative Backdrop Glow */}
-              <div className="mova-perspective-glow"></div>
-              
-              {/* Screen 1: Back Left */}
-              <div className="shadow-lg mova-screen-item back-left">
-                <img src="/assets/images/screens/home.JPG" alt="Mova Map View" />
-              </div>
-
-              {/* Screen 2: Back Right */}
-              <div className="shadow-lg mova-screen-item back-right">
-                <img src="/assets/images/screens/booking.JPG" alt="Mova Payment" />
-              </div>
-
-              {/* Screen 3: Main Front Center */}
-              <div className="shadow-2xl mova-screen-item main-front">
-                <img src="/assets/images/screens/trajets.JPG" alt="Mova Home" />
-              </div>
-            </div>
-          </div>
-
-          {/* CONTENT SIDE (Right) */}
-          <div className="order-1 col-lg-6 order-lg-2 ps-lg-5" data-aos="fade-up">
-            <h3 className="mb-5 display-7 fw-bold text-dark lh-sm">
-              Tout ce dont vous avez besoin, <br />
-              <span className="text-muted fw-light">dans votre poche.</span>
-            </h3>
-            
-            <div className="mb-5 row g-4">
-              {features.map((f, i) => (
-                <div className="col-sm-6" key={i}>
-                  <div className="p-3 transition-all mova-feature-card rounded-4">
-                    <div className="mb-3 shadow-sm mova-icon-box">
-                      <i className={`bi ${f.icon}`}></i>
+            <div className="col-lg-6" data-aos="fade-left">
+              <div className="position-relative ps-lg-5">
+                <img src="/assets/images/bus-1.jpg" alt="Transport Mova" className="shadow-2xl img-fluid rounded-5 main-hero-img" />
+                <div className="bottom-0 p-4 bg-white border shadow-xl floating-card rounded-4 position-absolute start-0 translate-middle-x d-none d-md-block border-light">
+                  <div className="gap-3 d-flex align-items-center">
+                    <div className="text-white icon-box bg-success rounded-circle d-flex align-items-center justify-content-center" style={{ width: '45px', height: '45px' }}>
+                      <i className="bi bi-rocket-takeoff"></i>
                     </div>
-                    <h5 className="mb-2 fw-bold text-dark fs-6">{f.title}</h5>
-                    <p className="mb-0 small text-muted">{f.desc}</p>
+                    <div>
+                      <h6 className="mb-0 fw-bold">Lancé en 2024</h6>
+                      <p className="mb-0 small text-muted">Brazzaville, Congo</p>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Store Buttons */}
-            <div className="flex-wrap gap-3 d-flex">
-              <a href="#" className="gap-3 px-4 py-2 transition-all btn btn-dark d-flex align-items-center rounded-4 hover-scale">
-                <i className="bi bi-apple fs-2"></i>
-                <div className="text-start lh-1">
-                  <small style={{ fontSize: '0.65rem' }} className="opacity-50 text-uppercase">Download on the</small>
-                  <div className="fw-bold fs-6">App Store</div>
-                </div>
-              </a>
-              <a href="#" className="gap-3 px-4 py-2 transition-all btn btn-dark d-flex align-items-center rounded-4 hover-scale">
-                <i className="bi bi-google-play fs-2"></i>
-                <div className="text-start lh-1">
-                  <small style={{ fontSize: '0.65rem' }} className="opacity-50 text-uppercase">Get it on</small>
-                  <div className="fw-bold fs-6">Google Play</div>
-                </div>
-              </a>
+              </div>
             </div>
           </div>
-
         </div>
-      </div>
+      </section>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      {/* --- 2. ACCOMPLISHMENTS: The "Proof" Section --- */}
+      <section className="py-24 bg-light-soft border-top border-bottom">
+        <div className="container mb-5 text-center">
+          <h6 className="tracking-widest text-success fw-bold text-uppercase small">Palmarès</h6>
+          <h2 className="fw-bold text-dark">Nos succès & distinctions</h2>
+        </div>
+        <div className="container">
+          <div className="row g-4">
+            {accomplishments.map((item, i) => (
+              <div className="col-md-4" key={i} data-aos="fade-up" data-aos-delay={i * 100}>
+                <div className="p-5 transition-all bg-white border shadow-sm h-100 rounded-5 hover-translate-up">
+                  <div className="mb-4 text-success display-6">
+                    <i className={`bi ${item.icon}`}></i>
+                  </div>
+                  <span className="px-3 py-2 mb-3 badge bg-success-soft text-success rounded-pill text-uppercase fw-bold" style={{ fontSize: '0.65rem' }}>
+                    {item.category}
+                  </span>
+                  <h4 className="mb-3 fw-bold text-dark">{item.title}</h4>
+                  <p className="mb-0 text-muted lh-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- 3. TEAM: Enhanced Cards --- */}
+      <section className="py-24 bg-white">
+        <div className="container mb-5 text-center">
+          <h6 className="tracking-widest text-success fw-bold text-uppercase small">L'Équipe</h6>
+          <h2 className="display-6 fw-bold">Les architectes du projet</h2>
+        </div>
+        <div className="container">
+          <div className="row g-4 justify-content-center">
+            {[
+              { role: "CEO & Co-fondateur", name: "Van Christ BOUETOUMOUSSA", img: "/assets/images/van.png" },
+              { role: "COO & Co-fondateur", name: "Switch Aimé", img: "/assets/images/switch.jpg" },
+              { role: "Lead Software Developer", name: "Arden BOUETOUMOUSSA", img: "/assets/images/arden.png" },
+              { role: "Responsable Opérationnelle", name: "Christina Inkiame", img: "/assets/images/christina.jpg" }
+            ].map((member, i) => (
+              <div className="col-6 col-md-3" key={i} data-aos="fade-up" data-aos-delay={i * 100}>
+                <div className="text-center group">
+                  <div className="mx-auto mb-4 overflow-hidden shadow-lg rounded-circle member-img-wrapper" style={{ width: '160px', height: '160px' }}>
+                    <img src={member.img} alt={member.name} className="transition-all duration-500 img-fluid grayscale-hover object-fit-cover w-100 h-100" />
+                  </div>
+                  <h6 className="mb-1 fw-bold text-dark">{member.name}</h6>
+                  <p className="tracking-wider text-success fw-bold x-small text-uppercase">{member.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- 4. CHIFFRES CLÉS: Impact Bar --- */}
+      <section className="container py-10">
+        <div className="p-5 overflow-hidden shadow-2xl rounded-5 position-relative" style={{ backgroundColor: '#005921' }} data-aos="zoom-in">
+          <div className="text-center row g-4 position-relative z-1">
+            {stats.map((stat, index) => (
+              <div key={index} className="col-6 col-md-3">
+                <h3 className="mb-1 text-white display-5 fw-black">
+                  <Counter end={stat.value} />
+                  <span className="opacity-75 fs-3 ms-1">{stat.suffix}</span>
+                </h3>
+                <p className="mb-0 tracking-widest text-white-50 text-uppercase fw-bold x-small">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+          {/* Decorative lines in the stats box */}
+          <div className="top-0 pointer-events-none position-absolute start-0 w-100 h-100 opacity-10">
+            <div className="border border-white rounded-circle position-absolute" style={{ width: '300px', height: '300px', top: '-150px', left: '-100px' }}></div>
+            <div className="border border-white rounded-circle position-absolute" style={{ width: '200px', height: '200px', bottom: '-50px', right: '-50px' }}></div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- 5. FINAL CTA --- */}
+      <section className="py-24 text-center">
+        <div className="container">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="mb-4 display-5 fw-black text-dark">Prêt à réinventer vos déplacements ?</h2>
+            <p className="mb-5 text-muted fs-5 fw-light">Rejoignez une communauté qui privilégie le confort et la technologie.</p>
+            <div className="flex-wrap gap-3 d-flex justify-content-center">
+              <button className="px-5 py-3 shadow-xl btn btn-dark btn-lg rounded-pill fw-bold hover-translate-up">Nous contacter</button>
+              <button className="px-5 py-3 btn btn-outline-success btn-lg rounded-pill fw-bold">Voir nos offres</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style dangerouslySetInnerHTML={{__html: `
+        .bg-light-soft { background-color: #fafafa; }
+        .bg-success-soft { background-color: rgba(0, 89, 33, 0.05); }
         .fw-black { font-weight: 900; }
+        .text-outline { color: transparent; -webkit-text-stroke: 1.5px #005921; }
+        .x-small { font-size: 0.7rem; }
+        .tracking-widest { letter-spacing: 0.25em; }
+        .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
+        .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
         
-        /* Perspective Container */
-        .mova-screens-perspective {
-          position: relative;
-          height: 550px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          perspective: 1500px;
-        }
+        .hover-translate-up:hover { transform: translateY(-10px); }
+        .grayscale-hover { filter: grayscale(100%); }
+        .grayscale-hover:hover { filter: grayscale(0%); transform: scale(1.05); }
 
-        .mova-perspective-glow {
-          position: absolute;
-          width: 400px; height: 400px;
-          background: radial-gradient(circle, rgba(0, 89, 33, 0.1) 0%, transparent 70%);
-          border-radius: 50%;
-          z-index: 0;
-        }
-
-        .mova-screen-item {
-          position: absolute;
-          width: 240px;
-          border-radius: 32px; /* Individually rounded */
-          overflow: hidden;
-          background: #000;
-          border: 6px solid #1a1a1a;
-          transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .mova-screen-item img {
+        .main-hero-img { 
+          border-radius: 40px 120px 40px 40px; 
+          max-height: 500px;
+          object-fit: cover;
           width: 100%;
-          display: block;
         }
 
-        /* Initial Positions */
-        .back-left {
-          transform: translateX(-100px) rotateY(25deg) scale(0.85);
-          z-index: 1;
-          opacity: 0.6;
-        }
+        .member-img-wrapper { border: 4px solid #fff; }
 
-        .back-right {
-          transform: translateX(100px) rotateY(-25deg) scale(0.85);
-          z-index: 1;
-          opacity: 0.6;
-        }
-
-        .main-front {
-          z-index: 3;
-          transform: translateZ(50px);
-          box-shadow: 0 40px 80px -20px rgba(0,0,0,0.3) !important;
-        }
-
-        /* Interaction: Spread on Hover */
-        .mova-screens-perspective:hover .back-left {
-          transform: translateX(-180px) rotateY(15deg) scale(0.9);
-          opacity: 1;
-        }
-
-        .mova-screens-perspective:hover .back-right {
-          transform: translateX(180px) rotateY(-15deg) scale(0.9);
-          opacity: 1;
-        }
-
-        .mova-screens-perspective:hover .main-front {
-          transform: translateZ(100px) scale(1.05);
-        }
-
-        /* UI Elements */
-        .mova-icon-box {
-          width: 44px; height: 44px;
-          background: #f0fdf4;
-          color: #005921;
-          display: flex; align-items: center; justify-content: center;
-          border-radius: 12px;
-          font-size: 1.25rem;
-        }
-
-        .mova-feature-card:hover {
-          background: #f9fafb;
-          transform: translateY(-5px);
-        }
-
-        .hover-scale:hover {
-          transform: scale(1.05);
-          background: #000 !important;
-        }
-
-        @media (max-width: 991px) {
-          .mova-screens-perspective { height: 400px; transform: scale(0.8); }
-          .mova-screen-item { width: 180px; }
+        @media (max-width: 768px) {
+          .display-4 { font-size: 2.5rem; }
+          .display-5 { font-size: 2rem; }
         }
       `}} />
-    </section>
+    </main>
   );
-}
+};
 
-export default MovaPass;
+export default About;

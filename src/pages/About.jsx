@@ -66,28 +66,32 @@ const About = () => {
       />
 
       {/*  1. HERO: Design conservé, Tailles ajustées  */}
-      <section className="py-20 bg-white position-relative">
+      
+      <section className="py-24 bg-white position-relative">
         <div className="container">
           <div className="row align-items-center">
             <div className="mb-5 col-lg-6 mb-lg-0" data-aos="fade-up">
-              <span className="mb-3 tracking-widest text-success fw-bold text-uppercase small d-block">Est. 2024</span>
+              <span className="mb-3 tracking-widest text-success fw-bold text-uppercase small d-block">Notre Histoire</span>
               <h1 className="mb-4 display-5 fw-black text-dark lh-sm">
                 La liberté de se déplacer <span className="text-outline">autrement</span>.
               </h1>
-              <p className="text-muted fw-light pe-lg-5">
-                Móva Mobility transforme le paysage urbain en Afrique Centrale avec des solutions agiles et à portée de main.
+              <p className="text-muted fs-5 fw-light pe-lg-5">
+                Móva Mobility n'est pas seulement une application, c'est un engagement pour la dignité et l'efficacité des déplacements quotidiens.
               </p>
             </div>
             <div className="col-lg-6" data-aos="fade-left">
-              <div className="image-stack position-relative">
-                <img 
-                  src="/assets/images/bus-1.jpg" 
-                  alt="Modern Transport Africa" 
-                  className="shadow-lg img-fluid rounded-5 main-hero-img"
-                />
-                <div className="p-3 bg-white border shadow-lg experience-badge rounded-4 position-absolute top-50 start-0 translate-middle-x d-none d-md-block">
-                  <span className="h4 fw-bold text-success">2300+</span>
-                  <p className="mb-0 text-uppercase small fw-bold text-muted">Km parcourus</p>
+              <div className="position-relative ps-lg-5">
+                <img src="/assets/images/bus-1.jpg" alt="Transport Mova" className="shadow-2xl img-fluid rounded-5 main-hero-img" />
+                <div className="bottom-0 p-4 bg-white border shadow-xl floating-card rounded-4 position-absolute start-0 translate-middle-x d-none d-md-block border-light">
+                  <div className="gap-3 d-flex align-items-center">
+                    <div className="text-white icon-box bg-success rounded-circle d-flex align-items-center justify-content-center" style={{ width: '45px', height: '45px' }}>
+                      <i className="bi bi-rocket-takeoff"></i>
+                    </div>
+                    <div>
+                      <h6 className="mb-0 fw-bold">Lancé en 2025</h6>
+                      <p className="mb-0 small text-muted">Brazzaville, Congo</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -245,6 +249,36 @@ const About = () => {
 
         @media (max-width: 991px) {
           .display-5 { font-size: 2.2rem; }
+        }
+      `}} />
+      
+
+      <style dangerouslySetInnerHTML={{__html: `
+        .bg-light-soft { background-color: #fafafa; }
+        .bg-success-soft { background-color: rgba(0, 89, 33, 0.05); }
+        .fw-black { font-weight: 900; }
+        .text-outline { color: transparent; -webkit-text-stroke: 1.5px #005921; }
+        .x-small { font-size: 0.7rem; }
+        .tracking-widest { letter-spacing: 0.25em; }
+        .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
+        .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        
+        .hover-translate-up:hover { transform: translateY(-10px); }
+        .grayscale-hover { filter: grayscale(100%); }
+        .grayscale-hover:hover { filter: grayscale(0%); transform: scale(1.05); }
+
+        .main-hero-img { 
+          border-radius: 40px 120px 40px 40px; 
+          max-height: 500px;
+          object-fit: cover;
+          width: 100%;
+        }
+
+        .member-img-wrapper { border: 4px solid #fff; }
+
+        @media (max-width: 768px) {
+          .display-4 { font-size: 2.5rem; }
+          .display-5 { font-size: 2rem; }
         }
       `}} />
     </main>
