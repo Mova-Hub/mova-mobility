@@ -81,7 +81,7 @@ const About = () => {
             <div className="col-lg-6" data-aos="fade-left">
               <div className="image-stack position-relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1000&auto=format&fit=crop" 
+                  src="/assets/images/bus-1.jpg" 
                   alt="Modern Transport Africa" 
                   className="shadow-lg img-fluid rounded-5 main-hero-img"
                 />

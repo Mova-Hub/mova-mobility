@@ -21,21 +21,21 @@ function HomeJobSection() {
             </p>
             
             {/* CALL TO ACTION VERS LA PAGE CARRIÈRES */}
-            <Link 
-              to="/carrieres" 
+            <a 
+              href="/carrieres" 
               className="inline-flex items-center gap-2 px-8 py-3.5 text-base font-bold text-white bg-[var(--bs-primary,#0d6efd)] rounded-full hover:brightness-110 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 group !no-underline"
               style={{ textDecoration: 'none' }}
             >
               Voir les postes disponibles
               <i className="transition-transform bi bi-arrow-right group-hover:translate-x-1"></i>
-            </Link>
+            </a>
           </div>
           
           <div className="w-full lg:w-5/12" data-aos="fade-left" data-aos-delay="100">
             <div className="relative overflow-hidden shadow-2xl rounded-3xl">
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/40 to-transparent mix-blend-multiply"></div>
               <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop" 
+                src="/assets/images/about_2-min.jpg" 
                 alt="L'équipe Mova Mobility" 
                 className="w-full h-[320px] lg:h-[420px] object-cover transition-transform duration-1000 hover:scale-105"
               />

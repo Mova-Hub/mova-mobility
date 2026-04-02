@@ -91,7 +91,7 @@ function MovaPass() {
 
             {/* Boutons de téléchargement */}
             <div className="mova-store-buttons">
-              <a href="#" className="mova-btn-store">
+              <a href="https://apps.apple.com/app/id1591234567" target="_blank" rel="noopener noreferrer" className="mova-btn-store">
                 <i className="bi bi-apple fs-4"></i>
                 <div className="text-start lh-1">
                   <small className="mb-1 d-block">Télécharger dans l'</small>
@@ -99,7 +99,7 @@ function MovaPass() {
                 </div>
               </a>
               
-              <a href="#" className="mova-btn-store">
+              <a href="https://play.google.com/store/apps/details?id=com.busaccess.client" target="_blank" className="mova-btn-store">
                 <i className="bi bi-google-play fs-4"></i>
                 <div className="text-start lh-1">
                   <small className="mb-1 d-block">Disponible sur</small>
