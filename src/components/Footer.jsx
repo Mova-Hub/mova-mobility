@@ -101,11 +101,11 @@ function Footer() {
               <div className="mb-4 col-md-4 mb-lg-0">
                 <h3 className="mb-3 fs-5">Entreprise</h3>
                 <ul className="list-unstyled footer-links">
-                  <li><Link to="/movapass">Mova Pass</Link></li>
-                  <li><Link to="/carrieres">Carrières</Link></li>
-                  <li><Link to="/a-propos">Notre Vision</Link></li>
-                  <li><Link to="/terms">Conditions générales</Link></li>
-                  <li><Link to="/privacy">Politique de confidentialité</Link></li>
+                  <li><a href="/movapass">Mova Pass</a></li>
+                  <li><a href="/carrieres">Carrières</a></li>
+                  <li><a href="/a-propos">Notre Vision</a></li>
+                  <li><a href="/terms">Conditions générales</a></li>
+                  <li><a href="/privacy">Politique de confidentialité</a></li>
                 </ul>
               </div>
 

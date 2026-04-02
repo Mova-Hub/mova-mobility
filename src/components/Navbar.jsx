@@ -50,8 +50,8 @@ function Navbar({ setShowModal }) {
             
             {/* LOGO */}
             <div className="flex items-center flex-shrink-0">
-              <Link 
-                to="/" 
+              <a 
+                href="/" 
                 className="outline-none focus-visible:ring-2 focus-visible:ring-[var(--bs-primary,#0d6efd)] rounded-lg !no-underline"
                 style={{ textDecoration: 'none' }}
               >
@@ -60,15 +60,15 @@ function Navbar({ setShowModal }) {
                   src="/assets/images/logo/logo.png" 
                   alt="Mova Mobility" 
                 />
-              </Link>
+              </a>
             </div>
 
             {/* NAVIGATION DESKTOP */}
             <nav className="items-center justify-center flex-1 hidden mx-8 space-x-1 lg:flex">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.name}
-                  to={link.path}
+                  href={link.path}
                   className="relative px-4 py-2 text-sm font-semibold !no-underline transition-all duration-300 rounded-xl group"
                   style={{ textDecoration: 'none' }}
                 >
@@ -82,27 +82,28 @@ function Navbar({ setShowModal }) {
                   <span className={`absolute inset-0 bg-gray-50 rounded-xl scale-90 opacity-0 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100 ${
                     isActive(link.path) ? 'scale-100 opacity-100 bg-gray-50/80' : ''
                   }`}></span>
-                </Link>
+                </a>
               ))}
             </nav>
 
             {/* CALL TO ACTION DESKTOP */}
             <div className="items-center hidden space-x-4 lg:flex shrink-0">
-              <Link 
-                to="/contact" 
+              <a 
+                href="/contact" 
                 className="px-2 text-sm font-semibold text-gray-500 !no-underline transition-colors hover:text-gray-900"
                 style={{ textDecoration: 'none' }}
               >
                 Contact
-              </Link>
-              <button 
-                onClick={() => setShowModal(true)}
-                className="bg-[var(--bs-primary,#0d6efd)] text-white hover:brightness-110 px-6 py-2.5 !rounded-full text-sm font-bold transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 group border-none"
-                style={{ borderRadius: '9999px' }}
+              </a>
+              
+              <a 
+                href="/#movapass" 
+                className="px-8 py-3.5 text-sm font-bold text-white bg-[var(--bs-primary,#0d6efd)] border-none rounded-full hover:bg-[var(--bs-primary-hover,#0a58a2)] transition-all shadow-xl hover:-translate-y-1 flex items-center gap-2 !no-underline"
               >
-                Réserver mon bus 
-                <i className="transition-transform duration-300 bi bi-arrow-right group-hover:translate-x-1"></i>
-              </button>
+                Obtenir l'App
+                <i className="bi bi-apple"></i>
+                <i className="bi bi-google-play"></i>
+              </a>
             </div>
 
             {/* BOUTON MENU MOBILE */}
@@ -155,9 +156,9 @@ function Navbar({ setShowModal }) {
         <div className="flex-1 px-6 py-8 overflow-y-auto">
           <div className="flex flex-col space-y-1">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.name}
-                to={link.path}
+                href={link.path}
                 className={`px-4 py-4 rounded-2xl text-lg font-bold transition-all flex items-center justify-between !no-underline ${
                   isActive(link.path)
                     ? 'bg-[var(--bs-primary,#0d6efd)]/10 text-[var(--bs-primary,#0d6efd)]'
@@ -167,29 +168,28 @@ function Navbar({ setShowModal }) {
               >
                 {link.name}
                 {isActive(link.path) && <i className="text-sm bi bi-chevron-right"></i>}
-              </Link>
+              </a>
             ))}
-            <Link
-              to="/contact"
+            <a
+              href="/contact"
               className="px-4 py-4 text-lg font-bold text-gray-900 !no-underline transition-all rounded-2xl hover:bg-gray-50"
               style={{ textDecoration: 'none' }}
             >
               Contact
-            </Link>
+            </a>
           </div>
         </div>
 
         <div className="p-6 bg-gray-50/50">
-          <button 
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              setShowModal(true);
-            }}
+          <a 
+            href="/#movapass" 
             className="w-full bg-[var(--bs-primary,#0d6efd)] text-white px-5 py-4 !rounded-full text-base font-bold transition-all hover:brightness-110 flex justify-center items-center gap-2 shadow-md border-none"
-            style={{ borderRadius: '9999px' }}
+            style={{ textDecoration: 'none' }}
           >
-            Réserver mon bus <i className="bi bi-arrow-right"></i>
-          </button>
+            Obtenir l'App
+            <i className="bi bi-apple"></i>
+            <i className="bi bi-google-play"></i>
+          </a>
         </div>
       </div>
     </>

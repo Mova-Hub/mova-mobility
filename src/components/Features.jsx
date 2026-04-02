@@ -51,7 +51,7 @@ function Features() {
                       </div>
 
                       {/* Bouton Vidéo */}
-                      <div className="mt-auto align-self-start">
+                      {/* <div className="mt-auto align-self-start">
                         <button 
                           onClick={() => setShowVideoModal(true)}
                           className="gap-3 px-4 py-3 transition-all border-0 shadow-sm btn d-inline-flex align-items-center rounded-pill" 
@@ -69,7 +69,7 @@ function Features() {
                           </span>
                           Découvrir en vidéo
                         </button>
-                      </div>
+                      </div> */}
 
                     </div>
                   </div>

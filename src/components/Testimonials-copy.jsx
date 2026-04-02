@@ -1,30 +1,35 @@
 import React from 'react';
 
 function MovaPass() {
+  const features = [
+    { icon: "bi-calendar2-check", title: "Pass Mensuels", desc: "Forfaits adaptés à vos trajets fréquents." },
+    { icon: "bi-clock-history", title: "Priorité à bord", desc: "Confirmation rapide et accès prioritaire." },
+    { icon: "bi-geo-alt", title: "Suivi en direct", desc: "Localisez votre transport instantanément." },
+    { icon: "bi-credit-card", title: "Paiement sécurisé", desc: "Gérez vos abonnements via l'application." }
+  ];
+
   return (
-    <section className="bg-white mova-pass-section" id="movapass">
+    <section className="py-24 overflow-hidden bg-white mova-pass-section" id="movapass">
       <div className="container">
         
-        {/* En-tête */}
-        <div className="mb-5 text-center row justify-content-center pb-lg-4">
+        {/* Header */}
+        <div className="mb-5 text-center row justify-content-center pb-lg-5">
           <div className="col-lg-7">
             <div className="gap-2 mb-3 d-flex align-items-center justify-content-center" data-aos="fade-up">
               <span className="px-3 py-1 rounded-pill fw-bold text-uppercase" style={{ backgroundColor: '#00592115', color: '#005921', fontSize: '0.75rem', letterSpacing: '1px' }}>
-                L'Application Mova Pass
+                L'Écosystème Mova Pass
               </span>
             </div>
-            <h2 className="mb-4 display-7 fw-semibold text-dark" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="mb-4 display-5 fw-black text-dark" data-aos="fade-up" data-aos-delay="100">
               Une mobilité <span style={{ color: '#005921' }}>sans friction</span>.
             </h2>
-            <p className="mx-auto text-black fs-5" data-aos="fade-up" data-aos-delay="200" style={{ maxWidth: '600px' }}>
+            <p className="mx-auto text-muted fs-5" data-aos="fade-up" data-aos-delay="200" style={{ maxWidth: '600px' }}>
               Une seule interface pour réserver, suivre vos trajets et maîtriser votre budget avec nos forfaits intelligents.
             </p>
           </div>
         </div>
 
-
         <div className="row align-items-center g-5">
-          
           
           {/* CREATIVE MOCKUP SIDE (Left) */}
           <div className="order-2 col-lg-6 order-lg-1" data-aos="fade-right">
@@ -34,83 +39,62 @@ function MovaPass() {
               
               {/* Screen 1: Back Left */}
               <div className="shadow-lg mova-screen-item back-left">
-                <img src="/assets/images/screens/booking.JPG" alt="Mova Map View" />
+                <img src="/assets/images/screens/home.JPG" alt="Mova Map View" />
               </div>
 
               {/* Screen 2: Back Right */}
               <div className="shadow-lg mova-screen-item back-right">
-                <img src="/assets/images/screens/trajets.JPG" alt="Mova Payment" />
+                <img src="/assets/images/screens/booking.JPG" alt="Mova Payment" />
               </div>
 
               {/* Screen 3: Main Front Center */}
               <div className="shadow-2xl mova-screen-item main-front">
-                <img src="/assets/images/screens/home.JPG" alt="Mova Home" />
+                <img src="/assets/images/screens/trajets.JPG" alt="Mova Home" />
               </div>
             </div>
           </div>
 
-          {/* Contenu & Fonctionnalités (Droite) */}
-          <div className="order-1 mova-features-container">
-            <h3 className="mb-5 fw-semibold text-dark">Tout ce dont vous avez besoin, dans votre poche.</h3>
+          {/* CONTENT SIDE (Right) */}
+          <div className="order-1 col-lg-6 order-lg-2 ps-lg-5" data-aos="fade-up">
+            <h3 className="mb-5 display-7 fw-bold text-dark lh-sm">
+              Tout ce dont vous avez besoin, <br />
+              <span className="text-muted fw-light">dans votre poche.</span>
+            </h3>
             
-            <div className="mova-features-grid">
-              
-              <div className="mova-feature-item">
-                <i className="bi bi-calendar2-check mova-icon"></i>
-                <div>
-                  <h5 className="mb-1 fw-semibold text-dark">Pass Mensuels</h5>
-                  <p className="mb-0 text-black">Trajets prédéfinis pour un budget maîtrisé.</p>
+            <div className="mb-5 row g-4">
+              {features.map((f, i) => (
+                <div className="col-sm-6" key={i}>
+                  <div className="p-3 transition-all mova-feature-card rounded-4">
+                    <div className="mb-3 shadow-sm mova-icon-box">
+                      <i className={`bi ${f.icon}`}></i>
+                    </div>
+                    <h5 className="mb-2 fw-bold text-dark fs-6">{f.title}</h5>
+                    <p className="mb-0 small text-muted">{f.desc}</p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="mova-feature-item">
-                <i className="bi bi-clock-history mova-icon"></i>
-                <div>
-                  <h5 className="mb-1 fw-semibold text-dark">Priorité à bord</h5>
-                  <p className="mb-0 text-black">Confirmation rapide et accès prioritaire.</p>
-                </div>
-              </div>
-
-              <div className="mova-feature-item">
-                <i className="bi bi-geo-alt mova-icon"></i>
-                <div>
-                  <h5 className="mb-1 fw-semibold text-dark">Suivi en direct</h5>
-                  <p className="mb-0 text-black">Localisez votre transport instantanément.</p>
-                </div>
-              </div>
-
-              <div className="mova-feature-item">
-                <i className="bi bi-credit-card mova-icon"></i>
-                <div>
-                  <h5 className="mb-1 fw-semibold text-dark">Paiement sécurisé</h5>
-                  <p className="mb-0 text-black">Gérez vos abonnements directement via l'app.</p>
-                </div>
-              </div>
-
+              ))}
             </div>
 
-            {/* Boutons de téléchargement */}
-            <div className="mova-store-buttons">
-              <a href="#" className="mova-btn-store">
-                <i className="bi bi-apple fs-4"></i>
+            {/* Store Buttons */}
+            <div className="flex-wrap gap-3 d-flex">
+              <a href="#" className="gap-3 px-4 py-2 transition-all btn btn-dark d-flex align-items-center rounded-4 hover-scale">
+                <i className="bi bi-apple fs-2"></i>
                 <div className="text-start lh-1">
-                  <small className="mb-1 d-block">Télécharger dans l'</small>
-                  <span className="fw-bold fs-6">App Store</span>
+                  <small style={{ fontSize: '0.65rem' }} className="opacity-50 text-uppercase">Download on the</small>
+                  <div className="fw-bold fs-6">App Store</div>
                 </div>
               </a>
-              
-              <a href="#" className="mova-btn-store">
-                <i className="bi bi-google-play fs-4"></i>
+              <a href="#" className="gap-3 px-4 py-2 transition-all btn btn-dark d-flex align-items-center rounded-4 hover-scale">
+                <i className="bi bi-google-play fs-2"></i>
                 <div className="text-start lh-1">
-                  <small className="mb-1 d-block">Disponible sur</small>
-                  <span className="fw-bold fs-6">Google Play</span>
+                  <small style={{ fontSize: '0.65rem' }} className="opacity-50 text-uppercase">Get it on</small>
+                  <div className="fw-bold fs-6">Google Play</div>
                 </div>
               </a>
             </div>
-
           </div>
-        </div>
 
+        </div>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
@@ -208,7 +192,6 @@ function MovaPass() {
           .mova-screen-item { width: 180px; }
         }
       `}} />
-
     </section>
   );
 }
