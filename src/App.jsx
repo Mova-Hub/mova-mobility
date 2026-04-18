@@ -51,7 +51,7 @@ function App() {
           <Route path="/carrieres" element={<Careers />} />
           <Route path="/a-propos" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/privacy-policy" element={<Privacy />} />
+          <Route path="/privacy" element={<Privacy />} />
           {/* <Route path="/a-propos" element={<AboutPage />} /> */}
           
           {/* Route 404 (Page non trouvée) */}
