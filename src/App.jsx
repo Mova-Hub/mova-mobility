@@ -14,6 +14,7 @@ import Careers from './pages/Careers';
 import SEO from './components/SEO';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import Privacy from './pages/Privacy';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -50,6 +51,7 @@ function App() {
           <Route path="/carrieres" element={<Careers />} />
           <Route path="/a-propos" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<Privacy />} />
           {/* <Route path="/a-propos" element={<AboutPage />} /> */}
           
           {/* Route 404 (Page non trouvée) */}
