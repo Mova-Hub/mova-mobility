@@ -39,7 +39,7 @@ const Privacy = () => {
       />
 
       {/* --- Hero Section --- */}
-      <section className="py-5 bg-light border-bottom" style={{ paddingTop: '6rem', paddingBottom: '6rem' }}>
+      <section className="py-20 bg-light border-bottom" style={{ paddingTop: '6rem', paddingBottom: '6rem' }}>
         <div className="container">
           <div className="text-center row justify-content-center">
             <div className="col-lg-8" data-aos="fade-up">
