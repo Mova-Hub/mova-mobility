@@ -142,7 +142,7 @@ const Privacy = () => {
                     <p className="small text-muted">
                       Vous pouvez demander la suppression complète de votre compte et de toutes les données associées directement depuis l'application Mova :
                       <br/><br/>
-                      <strong>Dans l'App :</strong> Allez dans <em>Profil &gt; Paramètres &gt; Confidentialité &gt; Supprimer mon compte</em>.<br/>
+                      <strong>Dans l'App :</strong> Allez dans <em>Mon Compte &gt; Confidentialité &gt; Supprimer mon compte</em>.<br/>
                       <strong>Sur le Web :</strong> Envoyez un e-mail à <a href="mailto:privacy@mova-mobility.com" className="text-decoration-none" style={{ color: '#005921' }}>privacy@mova-mobility.com</a>. La suppression sera traitée sous 14 jours.
                     </p>
                   </div>
