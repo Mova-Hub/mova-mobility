@@ -86,7 +86,7 @@ function MovaPass() {
                 </div>
                 <div className="mp-card-body">
                   <span className="mp-card-title">Bus confirmé</span>
-                  <span className="mp-card-sub">Départ dans 5 min · Ligne 12</span>
+                  <span className="mp-card-sub">Départ dans 5 min</span>
                 </div>
               </div>
 
@@ -204,7 +204,7 @@ function MovaPass() {
                   <div key={i} className="mp-avatar" style={{ zIndex: 5 - i }}>{l}</div>
                 ))}
               </div>
-              <span>Rejoignez <strong>2 300+</strong> utilisateurs actifs</span>
+              <span>Rejoignez <strong>300+</strong> utilisateurs actifs</span>
             </div>
 
           </div>
