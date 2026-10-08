@@ -1,5 +1,5 @@
 import React from 'react';
-import ReservationModal from './ReservationModal';
+import { downloadUrl } from '../config/stores';
 
 function BusAccess() {
     
@@ -26,9 +26,9 @@ function BusAccess() {
                     <h3 className="fs-5 mb-3">Mariages</h3>
                     <p className="mb-4">Transportez vos invités en toute élégance pour votre jour spécial.</p>
                   </div>
-                  <a className="special-link d-inline-flex gap-2 align-items-center text-decoration-none" href="tel:+242067633232">
+                  <a className="special-link d-inline-flex gap-2 align-items-center text-decoration-none" href={downloadUrl()}>
                     <span className="icons"><i className="icon-1 bi bi-arrow-right-short"></i><i className="icon-2 bi bi-arrow-right-short"></i></span>
-                    <span>Réserver maintenant</span>
+                    <span>Réserver dans l’app</span>
                   </a>
                 </div>
               </div>
@@ -45,9 +45,9 @@ function BusAccess() {
                     <h3 className="fs-5 mb-3">Obsèques</h3>
                     <p className="mb-4">Un transport fiable et respectueux pour les cérémonies funéraires.</p>
                   </div>
-                  <a className="special-link d-inline-flex gap-2 align-items-center text-decoration-none" href="tel:+242067633232">
+                  <a className="special-link d-inline-flex gap-2 align-items-center text-decoration-none" href={downloadUrl()}>
                     <span className="icons"><i className="icon-1 bi bi-arrow-right-short"></i><i className="icon-2 bi bi-arrow-right-short"></i></span>
-                    <span>Réserver maintenant</span>
+                    <span>Réserver dans l’app</span>
                   </a>
                 </div>
               </div>
@@ -64,9 +64,9 @@ function BusAccess() {
                     <h3 className="fs-5 mb-3">Sorties scolaires</h3>
                     <p className="mb-4">Des bus sécurisés pour les activités éducatives et récréatives.</p>
                   </div>
-                  <a className="special-link d-inline-flex gap-2 align-items-center text-decoration-none" href="tel:+242067633232">
+                  <a className="special-link d-inline-flex gap-2 align-items-center text-decoration-none" href={downloadUrl()}>
                     <span className="icons"><i className="icon-1 bi bi-arrow-right-short"></i><i className="icon-2 bi bi-arrow-right-short"></i></span>
-                    <span>Réserver maintenant</span>
+                    <span>Réserver dans l’app</span>
                   </a>
                 </div>
               </div>
@@ -86,7 +86,7 @@ function BusAccess() {
                     <div className="lh-base"><strong className="d-block">Alexy Xavier</strong><span>Client satisfait</span></div>
                   </div>
                 </div>
-                <a className="btn btn-primary mt-4" href="tel:+242067633232">Réserver un bus maintenant</a>
+                <a className="btn btn-primary mt-4" href={downloadUrl()}>Télécharger l’app pour réserver</a>
               </div>
             </div>
 

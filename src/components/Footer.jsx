@@ -1,28 +1,34 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Ajout de l'import Link
-import axios from 'axios';
+import { subscribeNewsletter, errorMessage } from '../api/site';
 
+/*
+ * The newsletter sign-up is double opt-in: submitting only sends a
+ * confirmation e-mail, and the address is subscribed once its owner clicks the
+ * link. So the success message says "check your inbox", not "subscribed".
+ */
 function Footer() {
-  const [newsletterData, setNewsletterData] = useState({
-    name: '',
-    phone: ''
-  });
+  const [email, setEmail] = useState('');
+  // Honeypot, hidden from people. Bots fill it in and the API drops them.
+  const [website, setWebsite] = useState('');
+  const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(null);
-
-  const handleChange = (e) => {
-    setNewsletterData({ ...newsletterData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(null);
+    setSending(true);
     try {
-      // Placeholder API call to send newsletter subscription to admin dashboard
-      await axios.post('/api/subscribe-newsletter', newsletterData);
-      setStatus({ type: 'success', message: 'Inscription réussie !' });
-      setNewsletterData({ name: '', phone: '' });
+      const message = await subscribeNewsletter({ email, website });
+      setStatus({
+        type: 'success',
+        message: message || 'Presque fini : confirmez votre inscription grâce au lien envoyé par e-mail.',
+      });
+      setEmail('');
     } catch (error) {
-      setStatus({ type: 'error', message: 'Échec de l’inscription. Veuillez réessayer.' });
+      setStatus({ type: 'danger', message: errorMessage(error) });
+    } finally {
+      setSending(false);
     }
   };
 
@@ -38,28 +44,38 @@ function Footer() {
           </div>
           <div className="col-md-5">
             <form className="gap-2 d-flex" onSubmit={handleSubmit}>
+              <label className="visually-hidden" htmlFor="newsletter-email">Adresse e-mail</label>
               <input
+                id="newsletter-email"
                 className="form-control"
+                type="email"
+                name="email"
+                autoComplete="email"
+                placeholder="Votre adresse e-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
                 type="text"
-                name="name"
-                placeholder="Votre nom"
-                value={newsletterData.name}
-                onChange={handleChange}
-                required
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, opacity: 0 }}
               />
-              <input
-                className="form-control"
-                type="tel"
-                name="phone"
-                placeholder="Votre numéro"
-                value={newsletterData.phone}
-                onChange={handleChange}
-                required
-              />
-              <button className="btn btn-primary fs-6 text-nowrap" type="submit">S'abonner</button>
+              <button className="btn btn-primary fs-6 text-nowrap" type="submit" disabled={sending}>
+                {sending ? 'Envoi…' : "S'abonner"}
+              </button>
             </form>
+            <p className="mt-2 mb-0 small text-muted">
+              Un e-mail de confirmation vous sera envoyé. Désinscription en un clic à tout moment.{' '}
+              <Link to="/privacy" className="text-muted">Confidentialité</Link>
+            </p>
             {status && (
-              <div className={`mt-3 alert alert-${status.type}`}>
+              <div className={`mt-3 alert alert-${status.type}`} role="status">
                 {status.message}
               </div>
             )}

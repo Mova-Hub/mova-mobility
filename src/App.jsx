@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // Add useEffect
+import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom'; // Add useLocation
 import { Helmet } from 'react-helmet-async';
 import AOS from 'aos'; // Import the AOS library
@@ -6,7 +6,6 @@ import AOS from 'aos'; // Import the AOS library
 // Composants globaux
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ReservationModal from './components/ReservationModal';
 
 // Pages
 import Home from './pages/Home';
@@ -15,9 +14,10 @@ import SEO from './components/SEO';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Privacy from './pages/Privacy';
+import JobDetail from './pages/JobDetail';
+import NewsletterAction from './pages/NewsletterAction';
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
   const location = useLocation(); // Allows us to track route changes
 
   // Initialize AOS once when the app starts
@@ -42,16 +42,19 @@ function App() {
         description="Móva Mobility, c’est la liberté de se déplacer autrement. Réservez un bus pour vos événements ou trajets quotidiens."
       />
 
-      <Navbar setShowModal={setShowModal} />
+      <Navbar />
       
       {/* Le contenu principal (qui change selon l'URL) prend l'espace restant */}
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/carrieres" element={<Careers />} />
+          <Route path="/carrieres/:id" element={<JobDetail />} />
           <Route path="/a-propos" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/newsletter/confirmation" element={<NewsletterAction mode="confirm" />} />
+          <Route path="/newsletter/desinscription" element={<NewsletterAction mode="unsubscribe" />} />
           {/* <Route path="/a-propos" element={<AboutPage />} /> */}
           
           {/* Route 404 (Page non trouvée) */}
@@ -60,7 +63,6 @@ function App() {
       </main>
 
       <Footer />
-      <ReservationModal show={showModal} handleClose={() => setShowModal(false)} />
     </div>
   );
 }
