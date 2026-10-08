@@ -95,8 +95,11 @@ export default function JobDetail() {
 
   const scrollToForm = () => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  if (state === 'loading') return <DetailSkeleton />;
-  if (state === 'missing' || state === 'error') return <NotFound missing={state === 'missing'} />;
+  // The page's styles ride along with every state: the error page's button
+  // uses them too, and rendered as a bare link without them.
+  const styles = <style dangerouslySetInnerHTML={{ __html: STYLES }} />;
+  if (state === 'loading') return <>{styles}<DetailSkeleton /></>;
+  if (state === 'missing' || state === 'error') return <>{styles}<NotFound missing={state === 'missing'} /></>;
 
   const salary = jobApi.formatSalary(job);
   const left = daysLeft(job.closesAt);
@@ -316,7 +319,7 @@ export default function JobDetail() {
         </div>
       )}
 
-      <style dangerouslySetInnerHTML={{ __html: STYLES }} />
+      {styles}
     </div>
   );
 }
@@ -639,7 +642,7 @@ const STYLES = `
   .jd-btn-primary {
     display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
     padding: .85rem 1.5rem; border-radius: 999px; border: 0;
-    background: var(--bs-primary); color: #fff; font-weight: 600; font-size: .95rem;
+    background: var(--bs-primary); color: #fff; font-weight: 600; font-size: .95rem; text-decoration: none;
     transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
   }
   .jd-btn-primary:hover { filter: brightness(1.12); box-shadow: 0 8px 24px rgba(0, 89, 33, .25); color: #fff; }
@@ -648,7 +651,7 @@ const STYLES = `
   .jd-btn-ghost {
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .8rem 1.25rem; border-radius: 999px; border: 1px solid #e5e7eb;
-    background: #fff; color: #111827; font-weight: 600; font-size: .95rem; transition: border-color .2s, background .2s;
+    background: #fff; color: #111827; font-weight: 600; font-size: .95rem; text-decoration: none; transition: border-color .2s, background .2s;
   }
   .jd-btn-ghost:hover { border-color: var(--bs-primary); color: var(--bs-primary); }
   .jd-icon-btn {
