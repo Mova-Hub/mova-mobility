@@ -120,8 +120,8 @@ function Footer() {
                   <li><a href="/movapass">Mova Pass</a></li>
                   <li><a href="/carrieres">Carrières</a></li>
                   <li><a href="/a-propos">Notre Vision</a></li>
-                  <li><a href="/terms">Conditions générales</a></li>
-                  <li><a href="/privacy">Politique de confidentialité</a></li>
+                  <li><Link to="/conditions">Conditions générales</Link></li>
+                  <li><Link to="/privacy">Politique de confidentialité</Link></li>
                 </ul>
               </div>
 

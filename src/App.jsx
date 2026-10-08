@@ -14,6 +14,7 @@ import SEO from './components/SEO';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 import JobDetail from './pages/JobDetail';
 import NewsletterAction from './pages/NewsletterAction';
 
@@ -53,6 +54,8 @@ function App() {
           <Route path="/a-propos" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/conditions" element={<Terms />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/newsletter/confirmation" element={<NewsletterAction mode="confirm" />} />
           <Route path="/newsletter/desinscription" element={<NewsletterAction mode="unsubscribe" />} />
           {/* <Route path="/a-propos" element={<AboutPage />} /> */}
