@@ -97,7 +97,7 @@ function Navbar() {
               </a>
               
               <a 
-                href="/#movapass" 
+                href="/#application" 
                 className="px-8 py-3.5 text-sm font-bold text-white bg-[var(--bs-primary,#0d6efd)] border-none rounded-full hover:bg-[var(--bs-primary-hover,#0a58a2)] transition-all shadow-xl hover:-translate-y-1 flex items-center gap-2 !no-underline"
               >
                 Obtenir l'App
@@ -182,7 +182,7 @@ function Navbar() {
 
         <div className="p-6 bg-gray-50/50">
           <a 
-            href="/#movapass" 
+            href="/#application" 
             className="w-full bg-[var(--bs-primary,#0d6efd)] text-white px-5 py-4 !rounded-full text-base font-bold transition-all hover:brightness-110 flex justify-center items-center gap-2 shadow-md border-none"
             style={{ textDecoration: 'none' }}
           >

@@ -1,0 +1,217 @@
+/*
+ * iPhone 11, drawn in CSS from the real proportions.
+ *
+ * Body 75.7 x 150.9 mm, display 6.1" at 828 x 1792. Everything is a multiple
+ * of --w (the device width), so the frame scales without a single magic pixel:
+ *   - the LCD bezel is ~7.35% of the width on every side (uniform on the 11,
+ *     unlike the Pro), split into a 1.2% aluminium band and black glass;
+ *   - the display corner radius is 10% of the screen width, the body's is
+ *     the display radius plus the bezel;
+ *   - the notch is 54% of the screen width and 3.4% of its height.
+ */
+.ip11 {
+  --w: 300px;
+  --band: #3a3b3e;
+  --band-hi: #75767a;
+  --band-lo: #1c1d1f;
+  position: relative;
+  width: var(--w);
+  aspect-ratio: 75.7 / 150.9;
+  flex-shrink: 0;
+  border-radius: calc(var(--w) * 0.159) / calc(var(--w) * 0.159);
+  padding: calc(var(--w) * 0.014);
+  /* Anodised aluminium: matte, lit from the left, darker at the edges. */
+  background:
+    linear-gradient(90deg, var(--band-lo) 0%, var(--band-hi) 6%, var(--band) 14%, var(--band) 86%, var(--band-hi) 94%, var(--band-lo) 100%);
+  box-shadow:
+    inset 0 0 0 calc(var(--w) * 0.002) rgba(255, 255, 255, .28),
+    inset 0 0 0 calc(var(--w) * 0.006) rgba(0, 0, 0, .12),
+    inset 0 calc(var(--w) * 0.004) calc(var(--w) * 0.006) rgba(255, 255, 255, .12),
+    0 calc(var(--w) * 0.02) calc(var(--w) * 0.04) rgba(0, 0, 0, .12),
+    0 calc(var(--w) * 0.09) calc(var(--w) * 0.18) rgba(0, 0, 0, .22);
+  isolation: isolate;
+}
+
+.ip11[data-finish="white"]  { --band: #e9e6df; --band-hi: #fbf9f4; --band-lo: #c9c5bc; }
+.ip11[data-finish="green"]  { --band: #aee1cd; --band-hi: #cdeee1; --band-lo: #86bfa8; }
+.ip11[data-finish="purple"] { --band: #d1cdda; --band-hi: #e6e3ee; --band-lo: #aaa5b8; }
+.ip11[data-finish="yellow"] { --band: #ffe681; --band-hi: #fff2b8; --band-lo: #dcc25c; }
+.ip11[data-finish="red"]    { --band: #ba0c2e; --band-hi: #d8304f; --band-lo: #8a0821; }
+
+/* Side buttons, protruding from the band. Positions measured from the top. */
+.ip11-btn {
+  position: absolute;
+  width: calc(var(--w) * 0.012);
+  background: linear-gradient(90deg, var(--band-lo), var(--band-hi) 50%, var(--band));
+  border-radius: calc(var(--w) * 0.006);
+  z-index: -1;
+}
+.ip11-btn.is-left { left: calc(var(--w) * -0.009); }
+.ip11-btn.is-right { right: calc(var(--w) * -0.009); background: linear-gradient(90deg, var(--band), var(--band-hi) 50%, var(--band-lo)); }
+.ip11-btn.is-silent { top: 18.2%; height: 3.6%; }
+.ip11-btn.is-vol-up { top: 25.4%; height: 7.2%; }
+.ip11-btn.is-vol-down { top: 34.2%; height: 7.2%; }
+.ip11-btn.is-power { top: 28.5%; height: 11.2%; }
+
+/* Black glass between the band and the display (the LCD bezel). */
+.ip11-glass {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--w) * 0.145);
+  background: #050505;
+  padding: calc(var(--w) * 0.0595);
+  /* The dark seam where glass meets the band, then the glass edge catching light. */
+  box-shadow:
+    0 0 0 calc(var(--w) * 0.0025) #000,
+    inset 0 0 0 calc(var(--w) * 0.002) rgba(255, 255, 255, .10),
+    inset 0 calc(var(--w) * 0.01) calc(var(--w) * 0.02) rgba(255, 255, 255, .05);
+}
+
+.ip11-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: calc(var(--w) * 0.0862);
+  background: #f2f2f7;
+  container-type: inline-size;
+  /* Keeps the radius clipping images in Safari during transforms. */
+  transform: translateZ(0);
+}
+
+/* Only the screenshot itself, not images inside a drawn screen. */
+.ip11-layer > img,
+.ip11-screen .ip11-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* The notch: earpiece and front camera, with the concave "ears" at the top. */
+.ip11-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 54%;
+  height: 3.4%;
+  transform: translateX(-50%);
+  background: #050505;
+  border-radius: 0 0 calc(var(--w) * 0.045) calc(var(--w) * 0.045);
+  z-index: 3;
+}
+.ip11-notch::before,
+.ip11-notch::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: calc(var(--w) * 0.02);
+  height: calc(var(--w) * 0.02);
+}
+.ip11-notch::before {
+  left: calc(var(--w) * -0.02);
+  background: radial-gradient(circle at 0 100%, transparent calc(var(--w) * 0.02), #050505 calc(var(--w) * 0.0205));
+}
+.ip11-notch::after {
+  right: calc(var(--w) * -0.02);
+  background: radial-gradient(circle at 100% 100%, transparent calc(var(--w) * 0.02), #050505 calc(var(--w) * 0.0205));
+}
+.ip11-speaker {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  width: 22%;
+  height: calc(var(--w) * 0.012);
+  transform: translateX(-50%);
+  border-radius: 99px;
+  background: #1a1a1a;
+  box-shadow: inset 0 calc(var(--w) * 0.002) calc(var(--w) * 0.002) rgba(0, 0, 0, .9);
+}
+.ip11-camera {
+  position: absolute;
+  top: 22%;
+  left: 68%;
+  width: calc(var(--w) * 0.03);
+  height: calc(var(--w) * 0.03);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #3a4a6a 0%, #121826 45%, #05070b 70%);
+  box-shadow: 0 0 0 calc(var(--w) * 0.003) #111;
+}
+
+/* A faint reflection across the glass, as on a real device under light. */
+.ip11-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 4;
+  background: linear-gradient(115deg, rgba(255, 255, 255, .10) 0%, rgba(255, 255, 255, .03) 28%, transparent 42%);
+}
+
+/* Home indicator, only drawn over placeholders: real screenshots carry it. */
+.ip11-home {
+  position: absolute;
+  bottom: 1.2%;
+  left: 50%;
+  width: 36%;
+  height: calc(var(--w) * 0.012);
+  transform: translateX(-50%);
+  border-radius: 99px;
+  background: rgba(0, 0, 0, .8);
+  z-index: 3;
+}
+
+/* Crossfade between screens. */
+.ip11-layer { position: absolute; inset: 0; transition: opacity .55s ease, transform .55s cubic-bezier(.2, .7, .2, 1); }
+.ip11-layer.is-hidden { opacity: 0; transform: scale(1.015); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ip11-layer { transition: none; }
+}
+
+/* Drawn stand-in for a screenshot that is not there yet. */
+.ip11-placeholder {
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(120% 60% at 50% 0%, rgba(0, 89, 33, .16), transparent 60%),
+    linear-gradient(180deg, #ffffff, #eef3ef);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui, sans-serif;
+}
+.ip11-ph-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: calc(var(--w) * 0.035) calc(var(--w) * 0.07) 0;
+  font-size: calc(var(--w) * 0.045);
+  font-weight: 600;
+  color: #111;
+}
+.ip11-ph-bar span:last-child { letter-spacing: calc(var(--w) * 0.01); }
+.ip11-ph-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--w) * 0.04);
+}
+.ip11-ph-icon {
+  display: grid;
+  place-items: center;
+  width: calc(var(--w) * 0.22);
+  height: calc(var(--w) * 0.22);
+  border-radius: calc(var(--w) * 0.06);
+  background: #005921;
+  color: #fff;
+  font-size: calc(var(--w) * 0.1);
+  box-shadow: 0 calc(var(--w) * 0.03) calc(var(--w) * 0.06) rgba(0, 89, 33, .3);
+}
+.ip11-ph-title { font-size: calc(var(--w) * 0.065); font-weight: 700; color: #111; letter-spacing: -.01em; }
+.ip11-ph-lines { display: flex; flex-direction: column; align-items: center; gap: calc(var(--w) * 0.02); margin-top: calc(var(--w) * 0.02); }
+.ip11-ph-lines i { display: block; height: calc(var(--w) * 0.018); border-radius: 99px; background: rgba(0, 0, 0, .08); }
+.ip11-ph-lines i:nth-child(1) { width: calc(var(--w) * 0.5); }
+.ip11-ph-lines i:nth-child(2) { width: calc(var(--w) * 0.42); }
+.ip11-ph-lines i:nth-child(3) { width: calc(var(--w) * 0.3); }

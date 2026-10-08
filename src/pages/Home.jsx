@@ -4,7 +4,7 @@ import Hero from '../components/Hero';
 import Features from '../components/Features';
 import BusAccess from '../components/BusAccess';
 import HowItWorks from '../components/HowItWorks';
-import MovaPass from '../components/MovaPass';
+import AppShowcase from '../components/AppShowcase';
 import TerrainImpact from '../components/TerrainImpact';
 import HomeJobSection from '../components/HomeJobSection';
 import About from '../components/About';
@@ -23,7 +23,7 @@ function Home() {
       <HowItWorks />
       <Testimonials />
       {/* <BusAccess /> */}
-      <MovaPass />
+      <AppShowcase />
       <TerrainImpact />
       <HomeJobSection />
     </>

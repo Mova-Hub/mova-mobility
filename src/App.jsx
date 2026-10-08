@@ -15,6 +15,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import MovaPassPage from './pages/MovaPassPage';
 import JobDetail from './pages/JobDetail';
 import NewsletterAction from './pages/NewsletterAction';
 
@@ -49,6 +50,7 @@ function App() {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/movapass" element={<MovaPassPage />} />
           <Route path="/carrieres" element={<Careers />} />
           <Route path="/carrieres/:id" element={<JobDetail />} />
           <Route path="/a-propos" element={<About />} />

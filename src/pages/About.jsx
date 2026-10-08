@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import SEO from '../components/SEO';
+import AboutStory from '../components/about/AboutStory';
 
 const Counter = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -129,6 +130,8 @@ const About = () => {
       </section>
 
 
+      <AboutStory />
+
       {/*  2. NOTRE MISSION: Focus Afrique Centrale  */}
       <section className="py-24 bg-light-soft">
         <div className="container">
@@ -138,7 +141,7 @@ const About = () => {
               <h2 className="mb-4 display-8 fw-bold">Une mobilité inclusive et intelligente.</h2>
               <div className="text-muted fs-7 lh-lg">
                 <p>Née d’une vision audacieuse, Móva Mobility répond aux défis complexes du transport en Afrique Centrale. Nous ne faisons pas que déplacer des passagers ; nous créons des connexions fluides entre les foyers, les bureaux et les écoles.</p>
-                <p className="mb-0">Que ce soit via notre <strong>Mova Pass</strong> pour vos trajets quotidiens ou <strong>Bus Access</strong> pour vos événements de groupe, notre promesse reste la même : un transport sans casse-tête.</p>
+                <p className="mb-0">Que ce soit via notre <strong>Mova Pass</strong> pour vos trajets quotidiens ou nos <strong>réservations de groupe</strong> pour vos événements, notre promesse reste la même : un transport sans casse-tête.</p>
               </div>
             </div>
             <div className="col-lg-6 d-none d-lg-block">

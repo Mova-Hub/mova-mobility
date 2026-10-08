@@ -1,0 +1,113 @@
+.asx {
+  position: relative;
+  padding: 7rem 0 6rem;
+  background: linear-gradient(180deg, #fff 0%, #f5f7f5 100%);
+  overflow: hidden;
+}
+.asx-anchor { position: absolute; top: -80px; }
+
+.asx-head { max-width: 760px; margin: 0 auto 4.5rem; text-align: center; }
+.asx-eyebrow {
+  display: inline-block; margin-bottom: 1rem;
+  font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bs-primary);
+}
+.asx-title {
+  font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.02; letter-spacing: -.035em; color: #0b0f0c; margin-bottom: 1.25rem;
+}
+.asx-title span { color: #8a938d; }
+.asx-lead { font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1.55; color: #4b5563; margin: 0 auto; max-width: 640px; }
+
+/* Chapters on the left, the device on the right. */
+.asx-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1040px;
+  margin: 0 auto 6rem;
+}
+.asx-chapters { list-style: none; margin: 0; padding: 0; }
+.asx-chapter { position: relative; padding: 1.1rem 0 1.2rem; border-bottom: 1px solid #e5e7eb; }
+.asx-chapter-btn {
+  display: flex; align-items: center; gap: .9rem; width: 100%;
+  background: none; border: 0; padding: 0; text-align: left; cursor: pointer; color: #9ca3af;
+  transition: color .3s;
+}
+.asx-chapter-btn:hover { color: #374151; }
+.asx-chapter.is-active .asx-chapter-btn { color: #0b0f0c; }
+.asx-chapter-icon {
+  display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 12px; background: #eef1ef; color: #6b7280; font-size: 1.1rem; transition: all .3s;
+}
+.asx-chapter.is-active .asx-chapter-icon { background: var(--bs-primary); color: #fff; box-shadow: 0 8px 18px rgba(0, 89, 33, .25); }
+.asx-chapter-title { font-size: clamp(1.1rem, 1.8vw, 1.35rem); font-weight: 700; letter-spacing: -.015em; }
+.asx-chapter-body { padding: .75rem 0 0 calc(40px + .9rem); animation: asxIn .45s ease both; }
+.asx-chapter-body p { margin: 0; color: #4b5563; font-size: 1.02rem; line-height: 1.65; }
+.asx-link { display: inline-flex; gap: .35rem; align-items: center; margin-top: .75rem; font-weight: 600; color: var(--bs-primary); text-decoration: none; }
+.asx-link:hover { text-decoration: underline; }
+.asx-progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; overflow: hidden; }
+.asx-progress-fill { display: block; height: 100%; width: 100%; background: var(--bs-primary); transform-origin: left; transform: scaleX(1); }
+.asx-progress-fill.is-animated { animation-name: asxProgress; animation-timing-function: linear; animation-fill-mode: both; }
+
+.asx-device { position: relative; display: flex; flex-direction: column; align-items: center; }
+.asx-glow {
+  position: absolute; top: 12%; left: 50%; width: 140%; height: 70%; transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(120, 110, 90, .14), transparent);
+  filter: blur(10px); z-index: -1;
+}
+.asx-chip {
+  position: absolute; top: 58%; left: -22%;
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .7rem 1rem; border-radius: 16px;
+  background: rgba(255, 255, 255, .82); backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, .9);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, .14);
+  font-weight: 600; font-size: .92rem; color: #0b0f0c; white-space: nowrap;
+  animation: asxChip .6s cubic-bezier(.2, .8, .2, 1) both, asxFloat 5s ease-in-out .6s infinite;
+}
+.asx-chip i { color: var(--bs-primary); font-size: 1.05rem; }
+.asx-dots { display: flex; gap: .5rem; margin-top: 1.75rem; }
+.asx-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 99px; background: #cfd5d1; transition: all .3s; }
+.asx-dots button.is-active { width: 24px; background: var(--bs-primary); }
+
+/* Gallery */
+.asx-gallery-head { display: flex; align-items: end; justify-content: space-between; margin-bottom: 1.5rem; }
+.asx-gallery-head h3 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -.03em; color: #0b0f0c; }
+.asx-arrows { display: flex; gap: .5rem; }
+.asx-arrows button {
+  width: 44px; height: 44px; border-radius: 50%; border: 0; background: #e8ece9; color: #111; transition: background .2s;
+}
+.asx-arrows button:hover { background: #dce2de; }
+.asx-gallery {
+  display: flex; gap: 2.25rem; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 1.5rem .5rem 2rem; margin: 0 -.5rem 4rem;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.asx-gallery::-webkit-scrollbar { display: none; }
+.asx-gallery:focus-visible { outline: 2px solid var(--bs-primary); outline-offset: 4px; border-radius: 12px; }
+.asx-gallery-item { margin: 0; scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.asx-gallery-item figcaption { font-weight: 600; color: #374151; font-size: .95rem; }
+
+/* Download */
+.asx-download {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding: 2rem 2.25rem; border-radius: 28px; background: #fff; border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, .06);
+}
+.asx-download-title { margin: 0 0 .25rem; font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em; color: #0b0f0c; }
+.asx-download-text { margin: 0; color: #6b7280; }
+
+@keyframes asxProgress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes asxIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes asxChip { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes asxFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+
+@media (max-width: 991.98px) {
+  .asx { padding: 5rem 0 4rem; }
+  .asx-stage { grid-template-columns: 1fr; gap: 2.5rem; }
+  .asx-device { order: -1; }
+  .asx-chip { left: 50%; top: auto; bottom: 3.5rem; translate: -50% 0; animation: asxChip .6s cubic-bezier(.2, .8, .2, 1) both; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .asx-chip, .asx-chapter-body { animation: none; }
+}
