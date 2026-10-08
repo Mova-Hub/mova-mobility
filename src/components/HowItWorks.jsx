@@ -19,15 +19,15 @@ function HowItWorks() {
     },
     {
       id: 3,
-      title: "Réservez en ligne",
-      desc: "Recevez votre devis instantané et confirmez votre réservation via notre paiement sécurisé.",
+      title: "Payez dans l’app",
+      desc: "Le prix s’affiche avant de confirmer. Payez en MTN MoMo, Airtel Money, carte ou Mova Credit.",
       icon: "bi-credit-card-2-front",
       delay: 300,
     },
     {
       id: 4,
       title: "Voyagez sereinement",
-      desc: "Nos chauffeurs certifiés assurent la logistique pour que votre groupe arrive à bon port.",
+      desc: "Suivez le bus en direct le jour J, et écrivez ou appelez l’équipe depuis l’app si besoin.",
       icon: "bi-shield-check",
       delay: 400,
       last: true
@@ -44,7 +44,7 @@ function HowItWorks() {
             <div className="gap-2 mb-3 d-flex align-items-center justify-content-center" data-aos="fade-up" data-aos-delay="0">
               <span style={{ width: '30px', height: '2px', backgroundColor: '#005921' }}></span>
               <span className="text-uppercase fw-bold" style={{ color: '#005921', fontSize: '0.8rem', letterSpacing: '2px' }}>
-                Comment ça marche, Bus Access
+                Comment ça marche
               </span>
               <span style={{ width: '30px', height: '2px', backgroundColor: '#005921' }}></span>
             </div>
@@ -52,7 +52,7 @@ function HowItWorks() {
               Réservez vos trajets de groupe en <span style={{ color: '#005921' }}>quelques clics</span>
             </h2>
             <p className="mx-auto fs-6 mova-subtitle text-muted" data-aos="fade-up" data-aos-delay="200">
-              Que ce soit pour un séminaire, un événement familial ou un transport scolaire, <strong>Bus Access</strong> vous permet de gérer votre flotte de transport privée sans aucune complexité logistique.
+              Que ce soit pour un séminaire, un événement familial ou un transport scolaire, l’app Mova vous permet de réserver vos bus sans aucune complexité logistique.
             </p>
           </div>
         </div>

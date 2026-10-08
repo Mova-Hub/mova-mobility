@@ -79,10 +79,10 @@ function Features() {
                     <div className="row g-4 g-lg-5 w-100">
                       {[
 
-                      { icon: 'bi-bus-front', title: 'Réservation Facile', text: 'Planifiez vos trajets ou réservez un bus en quelques clics via notre site ou application mobile.' },
-                      { icon: 'bi-shield-check', title: 'Fiabilité Garantie', text: 'Des bus modernes et ponctuels pour assurer un transport sans faille à chaque événement.' },
-                      { icon: 'bi-headset', title: 'Support Client 24/7', text: 'Une équipe dédiée toujours prête à vous assister, par chat, email ou téléphone.' },
-                      { icon: 'bi-ticket-perforated', title: 'Mova Pass Avantages', text: 'Trajets illimités et réductions exclusives pour une mobilité urbaine sans contraintes.' },
+                      { icon: 'bi-bus-front', title: 'Réservation facile', text: 'Réservez un bus dans l’app en quelques étapes. Le prix s’affiche avant de payer, en Mobile Money.' },
+                      { icon: 'bi-geo-alt', title: 'Suivi en direct', text: 'Votre bus sur la carte en temps réel, avec l’heure d’arrivée. Plus besoin d’appeler pour savoir où il est.' },
+                      { icon: 'bi-headset', title: 'Support dans l’app', text: 'Écrivez ou appelez l’équipe directement depuis l’app, sans frais d’itinérance.' },
+                      { icon: 'bi-credit-card-2-front', title: 'Mova Pass', text: 'Votre abonnement sur une carte NFC : vous la présentez, vous montez. Renouvellement dans l’app.' },
                       ].map((feature, i) => (
                         <div className="col-md-6" key={i} data-aos="fade-up" data-aos-delay={`${(i + 1) * 100}`}>
                           <div className="feature-item">
