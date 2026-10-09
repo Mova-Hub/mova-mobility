@@ -16,14 +16,14 @@ const OLD = '/assets/images/screens';
 export const SCREENS = {
   home: {
     src: `${DIR}/accueil.png`,
-    fallback: `${OLD}/home.JPG`,
+    // fallback: `${OLD}/acceuil.png`,
     title: 'Accueil',
     icon: 'bi-house-door',
     alt: 'Écran d’accueil de l’app Mova',
   },
   book: {
     src: `${DIR}/reservation.png`,
-    fallback: `${OLD}/booking.JPG`,
+    // fallback: `${OLD}/reservation.png`,
     title: 'Réserver',
     icon: 'bi-plus-circle',
     alt: 'Réservation d’un trajet : départ, arrivée, date et véhicules',
@@ -47,7 +47,7 @@ export const SCREENS = {
     alt: 'Le bus sur la carte, en temps réel',
   },
   trips: {
-    src: `${DIR}/trajets.png`,
+    src: `${DIR}/trips.png`,
     fallback: `${OLD}/trajets.JPG`,
     title: 'Mes trajets',
     icon: 'bi-list-ul',
