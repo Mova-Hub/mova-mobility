@@ -29,10 +29,10 @@ function About() {
 
                 {/* Titre Principal */}
                 <h2 
-                  className="mb-4 display-8 fw-semibold" 
+                  className="mb-4 t-title" 
                   data-aos="fade-up" 
                   data-aos-delay="100"
-                  style={{ color: '#111827', letterSpacing: '-0.02em', lineHeight: '1.2' }}
+                  style={{ color: '#111827' }}
                 >
                   Nous redéfinissons la mobilité urbaine avec des solutions <span style={{ color: '#005921' }}>agiles et fiables</span> pour l’Afrique Centrale.
                 </h2>
@@ -118,7 +118,7 @@ function About() {
                   <i className="bi bi-bus-front-fill fs-3"></i>
                 </div>
                 <div>
-                  <h3 className="mb-2 fs-6 text-uppercase fw-bold" style={{ letterSpacing: '1px', color: 'rgba(255,255,255,0.9)' }}>
+                  <h3 className="mb-2 fs-6 text-uppercase fw-semibold" style={{ letterSpacing: '1px', color: 'rgba(255,255,255,0.9)' }}>
                     Notre mission
                   </h3>
                   <p className="mb-0 fs-6 fw-medium lh-base">

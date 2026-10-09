@@ -46,7 +46,7 @@ export default function LegalPage({ seo, eyebrow, title, accent, intro, updated,
                 <span className="text-uppercase fw-bold legal-eyebrow">{eyebrow}</span>
                 <span className="legal-rule"></span>
               </div>
-              <h1 className="mb-4 display-6 fw-semibold text-dark">
+              <h1 className="mb-4 t-display text-dark">
                 {title} <span style={{ color: 'var(--bs-primary)' }}>{accent}</span>
               </h1>
               <p className="text-muted fs-5">{intro}</p>
@@ -84,7 +84,7 @@ export default function LegalPage({ seo, eyebrow, title, accent, intro, updated,
             <div className="col-lg-8">
               {summary && (
                 <div className="p-4 mb-5 p-md-5 rounded-4 legal-summary" data-aos="fade-up">
-                  <p className="mb-3 fw-bold text-dark"><i className="bi bi-lightning-charge me-2" style={{ color: 'var(--bs-primary)' }}></i>L’essentiel en 30 secondes</p>
+                  <p className="mb-3 fw-semibold text-dark"><i className="bi bi-lightning-charge me-2" style={{ color: 'var(--bs-primary)' }}></i>L’essentiel en 30 secondes</p>
                   <ul className="p-0 m-0 list-unstyled row g-3">
                     {summary.map((item) => (
                       <li key={item.title} className="col-md-6">
@@ -103,7 +103,7 @@ export default function LegalPage({ seo, eyebrow, title, accent, intro, updated,
 
               {sections.map((s, i) => (
                 <section key={s.id} id={s.id} className="mb-5 legal-section">
-                  <h2 className="mb-3 fw-bold text-dark">
+                  <h2 className="mb-3 t-heading text-dark">
                     <span className="legal-num">{i + 1}.</span> {s.title}
                   </h2>
                   {s.body}
@@ -118,7 +118,7 @@ export default function LegalPage({ seo, eyebrow, title, accent, intro, updated,
         <div className="container">
           <div className="gap-4 p-5 border shadow-sm rounded-5 d-flex flex-column flex-md-row align-items-center justify-content-between" style={{ backgroundColor: '#f9fafb' }}>
             <div className="text-center text-md-start">
-              <h3 className="mb-2 h4 fw-bolder text-dark">Une question sur ce document ?</h3>
+              <h3 className="mb-2 t-heading text-dark">Une question sur ce document ?</h3>
               <p className="mb-0 text-muted">Écrivez-nous, nous répondons sous 30 jours au plus.</p>
             </div>
             <div className="gap-3 d-flex flex-column flex-sm-row">
@@ -185,7 +185,7 @@ const LEGAL_STYLES = `
   .legal-summary-icon { font-size: 1.25rem; color: var(--bs-primary); }
   .legal-section { scroll-margin-top: 110px; }
   .legal-section h2 { font-size: 1.5rem; letter-spacing: -.02em; }
-  .legal-section h3 { font-size: 1.1rem; font-weight: 700; color: #111827; margin-top: 1.5rem; }
+  .legal-section h3 { font-size: var(--type-subheading); font-weight: 600; color: #111827; margin-top: 1.5rem; }
   .legal-num { color: var(--bs-primary); }
   .legal-section p, .legal-section li { line-height: 1.8; font-size: 1.02rem; color: #4b5563; }
   .legal-section ul { padding-left: 1.2rem; }

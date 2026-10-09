@@ -221,7 +221,7 @@ export default function MovaPassPage() {
         </svg>
         <div className="container mpp-hero-grid">
           <div className="mpp-hero-copy" data-aos="fade-up">
-            <span className="mpp-pill"><span className="mpp-pill-dot" />Mova Pass · Brazzaville</span>
+            <span className="mpp-pill">Mova Pass · Brazzaville</span>
             <h1>
               Le bus,<br />
               <span className="mpp-hero-mark">sans ticket.<Scribble /></span>
@@ -349,7 +349,7 @@ export default function MovaPassPage() {
       {/* Payments */}
       <section className="mpp-pay">
         <div className="container" data-aos="fade-up">
-          <h2 className="mpp-h2 text-center">Payez avec ce que vous avez déjà.</h2>
+          <h2 className="text-center mpp-h2">Payez avec ce que vous avez déjà.</h2>
           <p className="mpp-pay-lead">Le paiement se fait dans l’app, au moment de choisir votre formule. Vous recevez la confirmation et le reçu tout de suite.</p>
           <ul className="mpp-pay-list">
             {PAYMENTS.map((p) => (

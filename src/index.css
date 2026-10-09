@@ -24,6 +24,27 @@
   --nav-inverse-alt: #ffffff;
 }
 
+/*
+ * One title scale for the whole site. Same level, same size and weight,
+ * whichever page or framework (Bootstrap or Tailwind) the heading sits in.
+ * Titles are never heavier than 600: Arden does not want heavy bold titles.
+ *
+ *   t-display     the page's main title (h1)
+ *   t-title       a section title (h2)
+ *   t-heading     a title inside a block: job sections, legal articles, cards
+ *   t-subheading  card and step titles
+ */
+:root {
+  --type-display: clamp(2.5rem, 4.6vw, 3.75rem);
+  --type-title: clamp(1.875rem, 3vw, 2.5rem);
+  --type-heading: 1.5rem;
+  --type-subheading: 1.15rem;
+}
+.t-display { font-size: var(--type-display); font-weight: 500; line-height: 1.08; letter-spacing: -0.035em; }
+.t-title { font-size: var(--type-title); font-weight: 500; line-height: 1.12; letter-spacing: -0.03em; }
+.t-heading { font-size: var(--type-heading); font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; }
+.t-subheading { font-size: var(--type-subheading); font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
+
 body {
   font: 1rem/1.7 "Inter", sans-serif;
   background-color: var(--bs-body-bg);

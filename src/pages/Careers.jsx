@@ -104,7 +104,7 @@ function Careers() {
               <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
               {jobs.length > 0 ? `${jobs.length} poste${jobs.length > 1 ? 's' : ''} ouvert${jobs.length > 1 ? 's' : ''}` : 'Nous recrutons'}
             </span>
-            <h1 data-aos="fade-up" data-aos-delay="100" className="mb-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+            <h1 data-aos="fade-up" data-aos-delay="100" className="mb-6 t-display text-white">
               Façonnez l'avenir de la mobilité urbaine
             </h1>
             <p data-aos="fade-up" data-aos-delay="200" className="max-w-2xl text-lg font-normal leading-relaxed text-gray-200 sm:text-xl">
@@ -141,7 +141,7 @@ function Careers() {
       <div className="container px-4 pb-24 mx-auto max-w-7xl scroll-mt-24" id="open-positions">
         <div data-aos="fade-up">
           <div className="flex flex-wrap items-end justify-between gap-4 pb-4 mb-6 border-b border-gray-200">
-            <h2 className="mb-0 text-2xl font-bold text-gray-900">Postes ouverts</h2>
+            <h2 className="mb-0 t-title text-gray-900">Postes ouverts</h2>
             <span className="px-3 py-1 text-sm font-medium text-[var(--bs-primary)] bg-[var(--bs-primary)]/10 rounded-full">
               {filteredJobs.length} résultat{filteredJobs.length > 1 ? 's' : ''}
             </span>
@@ -190,7 +190,7 @@ function Careers() {
                           )}
                         </span>
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[var(--bs-primary)] transition-colors leading-tight">
+                      <h3 className="t-subheading text-gray-900 mb-3 group-hover:text-[var(--bs-primary)] transition-colors">
                         {job.title}
                       </h3>
                       <div className="flex flex-wrap items-center text-xs font-medium text-gray-500 gap-x-3 gap-y-2">
@@ -253,7 +253,7 @@ function Careers() {
         {/* Spontaneous application */}
         <div className="flex flex-col items-start justify-between gap-6 p-8 mt-16 text-white sm:flex-row sm:items-center sm:p-10 rounded-3xl bg-[var(--bs-primary)]" data-aos="fade-up">
           <div>
-            <h2 className="mb-2 text-2xl font-bold text-white">Votre poste n’est pas listé ?</h2>
+            <h2 className="mb-2 t-heading text-white">Votre poste n’est pas listé ?</h2>
             <p className="mb-0 text-white/80">Envoyez-nous une candidature spontanée. Nous gardons les profils intéressants en tête.</p>
           </div>
           <a

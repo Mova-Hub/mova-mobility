@@ -76,7 +76,7 @@ function TerrainImpact() {
               </span>
               <span style={{ width: '20px', height: '2px', backgroundColor: '#005921' }}></span>
             </div>
-            <h2 className="mb-3 display-8 fw-bolder text-dark" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="mb-3 t-title text-dark" data-aos="fade-up" data-aos-delay="100">
               Notre impact sur la mobilité
             </h2>
             <p className="text-muted fs-6" data-aos="fade-up" data-aos-delay="200">
@@ -103,7 +103,7 @@ function TerrainImpact() {
               {stats.map((stat, index) => (
                 <div key={index} className="px-2 mb-4 text-center col-6 col-md-3 mb-md-0 position-relative z-1" data-aos="fade-up" data-aos-delay={stat.delay}>
                   <div className="stat-item">
-                    <h3 className="mb-1 text-white display-5 fw-bolder">
+                    <h3 className="mb-1 text-white display-5 fw-semibold">
                       <Counter end={stat.value} />
                       <span className="fs-3 ms-1" style={{ opacity: 0.8 }}>{stat.suffix}</span>
                     </h3>

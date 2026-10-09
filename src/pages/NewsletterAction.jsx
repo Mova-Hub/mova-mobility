@@ -70,14 +70,14 @@ export default function NewsletterAction({ mode }) {
               {state === 'done' && (
                 <>
                   <i className="mb-3 bi bi-check-circle-fill d-block" style={{ fontSize: 48, color: '#005921' }} aria-hidden="true" />
-                  <h1 className="mb-3 h3 fw-bold">{copy.done}</h1>
+                  <h1 className="mb-3 t-heading">{copy.done}</h1>
                   <p className="mb-4 text-muted">{message}</p>
                 </>
               )}
               {state === 'error' && (
                 <>
                   <i className="mb-3 bi bi-exclamation-circle d-block text-danger" style={{ fontSize: 48 }} aria-hidden="true" />
-                  <h1 className="mb-3 h3 fw-bold">Lien non valide</h1>
+                  <h1 className="mb-3 t-heading">Lien non valide</h1>
                   <p className="mb-4 text-muted">{message}</p>
                 </>
               )}

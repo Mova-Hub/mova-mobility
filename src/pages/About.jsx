@@ -73,7 +73,7 @@ const About = () => {
           <div className="row align-items-center">
             <div className="mb-5 col-lg-6 mb-lg-0" data-aos="fade-up">
               <span className="mb-3 tracking-widest text-success fw-bold text-uppercase small d-block">Notre Histoire</span>
-              <h1 className="mb-4 display-5 fw-black text-dark lh-sm">
+              <h1 className="mb-4 t-display text-dark">
                 La liberté de se déplacer <span className="text-outline">autrement</span>.
               </h1>
               <p className="text-muted fs-5 fw-light pe-lg-5">
@@ -118,7 +118,7 @@ const About = () => {
             </div>
             <div className="col-lg-7 ps-lg-5" data-aos="fade-left">
               <h6 className="mb-3 text-success fw-bold text-uppercase small">Le Mot du Fondateur</h6>
-              <h2 className="mb-4 h1 fw-semibold">"L'Afrique mérite une mobilité de classe mondiale."</h2>
+              <h2 className="mb-4 t-title">"L'Afrique mérite une mobilité de classe mondiale."</h2>
               <div className="p-3 border-3 text-muted lh-base border-start border-success ps-4">
                 <p>Née d’une vision audacieuse, Móva Mobility redéfinit les déplacements urbains grâce à des solutions inclusives et intelligentes, conçues pour répondre aux défis d'aujourd'hui.</p>
                 <p className="mt-3 mb-0 fw-bold text-dark">Fondateur & CEO</p>
@@ -138,21 +138,29 @@ const About = () => {
           <div className="overflow-hidden bg-white border shadow-sm row g-0 align-items-stretch rounded-5">
             <div className="p-5 col-lg-6 p-lg-10 d-flex flex-column justify-content-center">
               <h6 className="mb-4 tracking-wider text-success fw-bold text-uppercase">Notre Vision</h6>
-              <h2 className="mb-4 display-8 fw-bold">Une mobilité inclusive et intelligente.</h2>
+              <h2 className="mb-4 t-title">Une mobilité inclusive et intelligente.</h2>
               <div className="text-muted fs-7 lh-lg">
                 <p>Née d’une vision audacieuse, Móva Mobility répond aux défis complexes du transport en Afrique Centrale. Nous ne faisons pas que déplacer des passagers ; nous créons des connexions fluides entre les foyers, les bureaux et les écoles.</p>
                 <p className="mb-0">Que ce soit via notre <strong>Mova Pass</strong> pour vos trajets quotidiens ou nos <strong>réservations de groupe</strong> pour vos événements, notre promesse reste la même : un transport sans casse-tête.</p>
               </div>
             </div>
+            {/* Two of our own photos rather than a stock meeting room: the people
+                Mova serves and works with, on the road and at work. */}
             <div className="col-lg-6 d-none d-lg-block">
-              <div 
-                className="h-100 min-vh-50"
-                style={{ 
-                  backgroundImage: 'url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1000&auto=format&fit=crop")',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              />
+              <div className="vision-photos h-100">
+                <img
+                  src="/assets/images/movapass/bus-chauffeur.jpg"
+                  alt="Un chauffeur souriant à la fenêtre de son minibus, à Brazzaville"
+                  loading="lazy"
+                  style={{ objectPosition: '62% 38%' }}
+                />
+                <img
+                  src="/assets/images/about_2-min.jpg"
+                  alt="Une jeune femme souriante travaille sur son ordinateur"
+                  loading="lazy"
+                  style={{ objectPosition: '60% 30%' }}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -163,7 +171,7 @@ const About = () => {
         <div className="container">
           <div className="mb-5 text-center">
             <h6 className="tracking-widest text-success fw-bold text-uppercase small">L'Équipe</h6>
-            <h2 className="h2 fw-bold">Les esprits derrière Mova.</h2>
+            <h2 className="t-title">Les esprits derrière Mova.</h2>
           </div>
           <div className="row g-4 justify-content-center">
             {[
@@ -204,7 +212,7 @@ const About = () => {
               {stats.map((stat, index) => (
                 <div key={index} className="px-2 mb-4 text-center col-6 col-md-3 mb-md-0 position-relative z-1" data-aos="fade-up" data-aos-delay={stat.delay}>
                   <div className="stat-item">
-                    <h3 className="mb-1 text-white display-5 fw-bolder">
+                    <h3 className="mb-1 text-white display-5 fw-semibold">
                       <Counter end={stat.value} />
                       <span className="fs-3 ms-1" style={{ opacity: 0.8 }}>{stat.suffix}</span>
                     </h3>
@@ -258,6 +266,8 @@ const About = () => {
 
       <style dangerouslySetInnerHTML={{__html: `
         .bg-light-soft { background-color: #fafafa; }
+        .vision-photos { display: grid; grid-template-rows: 1fr 1fr; gap: 6px; min-height: 480px; background: #fff; }
+        .vision-photos img { width: 100%; height: 100%; min-height: 0; object-fit: cover; display: block; }
         .bg-success-soft { background-color: rgba(0, 89, 33, 0.05); }
         .fw-black { font-weight: 900; }
         .text-outline { color: transparent; -webkit-text-stroke: 1.5px #005921; }

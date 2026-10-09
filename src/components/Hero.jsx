@@ -30,10 +30,10 @@ function Hero() {
                 </div>
                 
                 <h1 
-                  className="mb-6 text-5xl font-black leading-[1.1] tracking-tighter text-dark md:text-7xl" 
+                  className="mb-6 t-display text-dark" 
                   data-aos="fade-up" data-aos-delay="100"
                 >
-                  Déplacez-vous sans <br />
+                  Déplacez-vous sans{" "}
                   <span style={{ color: "#005921" }}>friction.</span>
                 </h1>
                 
