@@ -102,10 +102,9 @@ export function EcosystemIllustration({ className = '' }) {
   return (
     <svg viewBox="0 0 640 420" className={className} role="img" aria-label="La plateforme Mova relie passagers, chauffeurs, contrôleurs et l’équipe opérationnelle">
       <defs>
-        <radialGradient id="eco-hub" cx="50%" cy="40%" r="60%">
-          <stop offset="0" stopColor={GREEN} />
-          <stop offset="1" stopColor={GREEN} />
-        </radialGradient>
+        <filter id="eco-hub-shadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="#3c2d14" floodOpacity=".14" />
+        </filter>
       </defs>
       <rect width="640" height="420" rx="28" fill="#f6f3ec" />
       <circle cx="320" cy="210" r="150" fill="none" stroke="#e4dfd3" strokeWidth="1" />
@@ -115,13 +114,15 @@ export function EcosystemIllustration({ className = '' }) {
           {!reduced && <animate attributeName="stroke-dashoffset" values="0;-28" dur="1.4s" repeatCount="indefinite" />}
         </line>
       ))}
-      <circle cx="320" cy="210" r="62" fill="url(#eco-hub)" />
-      <circle cx="320" cy="210" r="74" fill="none" stroke={GREEN} strokeOpacity=".25" strokeWidth="2">
-        {!reduced && <animate attributeName="r" values="66;84;66" dur="3s" repeatCount="indefinite" />}
+      {/* The Mova logo at the centre, on white: the logo is green and orange,
+          so a green disc would swallow the mark. */}
+      <circle cx="320" cy="210" r="66" fill="#ffffff" stroke="#e4dfd3" strokeWidth="1.5" filter="url(#eco-hub-shadow)" />
+      <circle cx="320" cy="210" r="78" fill="none" stroke="#c9c2b2" strokeOpacity=".5" strokeWidth="1.5">
+        {!reduced && <animate attributeName="r" values="70;88;70" dur="3s" repeatCount="indefinite" />}
         {!reduced && <animate attributeName="stroke-opacity" values=".5;0;.5" dur="3s" repeatCount="indefinite" />}
       </circle>
-      <text x="320" y="206" textAnchor="middle" fontSize="22" fontWeight="800" fill="#fff" fontFamily="inherit">Mova</text>
-      <text x="320" y="228" textAnchor="middle" fontSize="11" fontWeight="600" fill="#d6e5da" fontFamily="inherit" letterSpacing="1.5">PLATEFORME</text>
+      {/* 500 x 220 logo, drawn 96 wide and centred on the hub. */}
+      <image href="/assets/images/logo/logo.png" x="272" y="188.9" width="96" height="42.2" preserveAspectRatio="xMidYMid meet" />
       {NODES.map((n) => (
         <g key={n.title} transform={`translate(${n.x} ${n.y})`}>
           <rect x="-90" y="-36" width="180" height="72" rx="20" fill="#ffffff" stroke="#e4dfd3" />
