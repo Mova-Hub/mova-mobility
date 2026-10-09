@@ -144,15 +144,23 @@ const About = () => {
                 <p className="mb-0">Que ce soit via notre <strong>Mova Pass</strong> pour vos trajets quotidiens ou nos <strong>réservations de groupe</strong> pour vos événements, notre promesse reste la même : un transport sans casse-tête.</p>
               </div>
             </div>
+            {/* Two of our own photos rather than a stock meeting room: the people
+                Mova serves and works with, on the road and at work. */}
             <div className="col-lg-6 d-none d-lg-block">
-              <div 
-                className="h-100 min-vh-50"
-                style={{ 
-                  backgroundImage: 'url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1000&auto=format&fit=crop")',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              />
+              <div className="vision-photos h-100">
+                <img
+                  src="/assets/images/movapass/bus-chauffeur.jpg"
+                  alt="Un chauffeur souriant à la fenêtre de son minibus, à Brazzaville"
+                  loading="lazy"
+                  style={{ objectPosition: '62% 38%' }}
+                />
+                <img
+                  src="/assets/images/about_2-min.jpg"
+                  alt="Une jeune femme souriante travaille sur son ordinateur"
+                  loading="lazy"
+                  style={{ objectPosition: '60% 30%' }}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -258,6 +266,8 @@ const About = () => {
 
       <style dangerouslySetInnerHTML={{__html: `
         .bg-light-soft { background-color: #fafafa; }
+        .vision-photos { display: grid; grid-template-rows: 1fr 1fr; gap: 6px; min-height: 480px; background: #fff; }
+        .vision-photos img { width: 100%; height: 100%; min-height: 0; object-fit: cover; display: block; }
         .bg-success-soft { background-color: rgba(0, 89, 33, 0.05); }
         .fw-black { font-weight: 900; }
         .text-outline { color: transparent; -webkit-text-stroke: 1.5px #005921; }
