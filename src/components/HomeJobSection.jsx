@@ -13,7 +13,7 @@ function HomeJobSection() {
             <span className="text-[var(--bs-primary,#0d6efd)] font-semibold tracking-wider uppercase text-xs mb-3 block">
               Rejoignez l'aventure
             </span>
-            <h2 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-gray-900 lg:text-5xl">
+            <h2 className="mb-6 t-title text-gray-900">
               Construisons ensemble <br className="hidden lg:block" /> la mobilité de demain.
             </h2>
             <p className="max-w-xl mb-8 text-lg leading-relaxed text-gray-600">

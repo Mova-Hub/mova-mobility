@@ -157,7 +157,7 @@ export default function JobDetail() {
               ) : null}
             </div>
 
-            <h1 className="max-w-4xl mb-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">{job.title}</h1>
+            <h1 className="max-w-4xl mb-4 t-display text-gray-900">{job.title}</h1>
 
             <div className="flex flex-wrap items-center text-sm font-medium text-gray-600 gap-x-5 gap-y-2">
               {place && <span className="flex items-center gap-1.5"><i className="bi bi-geo-alt"></i>{place}</span>}
@@ -244,7 +244,7 @@ export default function JobDetail() {
             {closed ? (
               <div className="p-8 text-center bg-white border border-gray-100 shadow-sm rounded-3xl">
                 <i className="text-4xl text-gray-400 bi bi-lock"></i>
-                <h2 className="mt-3 mb-2 text-xl font-semibold text-gray-900">Cette offre n’accepte plus de candidatures</h2>
+                <h2 className="mt-3 mb-2 t-heading text-gray-900">Cette offre n’accepte plus de candidatures</h2>
                 <p className="mb-5 text-gray-600">Les autres postes ouverts sont listés sur la page carrières.</p>
                 <Link to="/carrieres" className="no-underline jd-btn-primary">Voir les offres ouvertes</Link>
               </div>
@@ -294,7 +294,7 @@ export default function JobDetail() {
       {related.length > 0 && (
         <section className="container px-4 mx-auto mt-16 max-w-7xl">
           <div className="flex items-end justify-between mb-6">
-            <h2 className="mb-0 text-2xl font-bold text-gray-900">Autres offres</h2>
+            <h2 className="mb-0 t-title text-gray-900">Autres offres</h2>
             <Link to="/carrieres" className="text-sm font-semibold no-underline text-[var(--bs-primary)]">Tout voir <i className="bi bi-arrow-right"></i></Link>
           </div>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -324,7 +324,7 @@ export default function JobDetail() {
 function Section({ title, icon, children }) {
   return (
     <section className="p-6 bg-white border border-gray-100 shadow-sm sm:p-8 rounded-3xl jd-fade">
-      <h2 className="flex items-center gap-2 mb-5 text-xl font-bold text-gray-900">
+      <h2 className="flex items-center gap-2 mb-5 t-heading text-gray-900">
         <i className={`bi ${icon} text-[var(--bs-primary)]`}></i>
         {title}
       </h2>
@@ -462,7 +462,7 @@ function ApplicationForm({ job }) {
         <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-3xl rounded-full text-emerald-600 bg-emerald-50">
           <i className="bi bi-check-lg"></i>
         </div>
-        <h2 className="mb-2 text-2xl font-bold text-gray-900">Candidature envoyée</h2>
+        <h2 className="mb-2 t-heading text-gray-900">Candidature envoyée</h2>
         <p className="max-w-md mx-auto mb-6 text-gray-600">
           Merci {values.first_name}. Votre candidature au poste « {job.title} » est bien arrivée. Nous revenons vers vous à {values.email} sous 10 jours ouvrés.
         </p>
@@ -484,7 +484,7 @@ function ApplicationForm({ job }) {
     <form onSubmit={submit} noValidate={false} className="p-6 bg-white border border-gray-100 shadow-sm sm:p-10 rounded-3xl">
       <div className="flex flex-wrap items-end justify-between gap-3 mb-6">
         <div>
-          <h2 className="mb-1 text-2xl font-bold text-gray-900">Postuler</h2>
+          <h2 className="mb-1 t-heading text-gray-900">Postuler</h2>
           <p className="mb-0 text-sm text-gray-500">Environ 3 minutes. Les champs marqués * sont obligatoires.</p>
         </div>
         <div className="flex items-center gap-2 text-xs font-medium text-gray-500" aria-hidden="true">
@@ -621,7 +621,7 @@ function NotFound({ missing }) {
     <div className="flex items-center min-h-screen pt-24 pb-16 bg-gray-50/60">
       <div className="container max-w-xl px-4 mx-auto text-center">
         <i className={`bi ${missing ? 'bi-briefcase' : 'bi-wifi-off'} text-5xl text-gray-300`}></i>
-        <h1 className="mt-4 mb-3 text-2xl font-bold text-gray-900">
+        <h1 className="mt-4 mb-3 t-title text-gray-900">
           {missing ? 'Cette offre n’est plus disponible' : 'Impossible de charger l’offre'}
         </h1>
         <p className="mb-6 text-gray-600">

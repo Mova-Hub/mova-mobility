@@ -40,7 +40,7 @@ function Features() {
                           </span>
                         </div>
 
-                        <h2 className="mb-4 display-8 fw-semibold" style={{ color: '#111827', letterSpacing: '-0.03em' }}>
+                        <h2 className="mb-4 t-title" style={{ color: '#111827' }}>
                           Pourquoi choisir <br />
                           <span style={{ color: '#005921' }}>Móva Mobility</span> ?
                         </h2>

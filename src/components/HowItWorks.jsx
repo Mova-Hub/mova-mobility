@@ -48,7 +48,7 @@ function HowItWorks() {
               </span>
               <span style={{ width: '30px', height: '2px', backgroundColor: '#005921' }}></span>
             </div>
-            <h2 className="mb-4 display-8 fw-semibold text-dark" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="mb-4 t-title text-dark" data-aos="fade-up" data-aos-delay="100">
               Réservez vos trajets de groupe en <span style={{ color: '#005921' }}>quelques clics</span>
             </h2>
             <p className="mx-auto fs-6 mova-subtitle text-muted" data-aos="fade-up" data-aos-delay="200">

@@ -76,7 +76,7 @@ function Testimonials() {
               </span>
               <span style={{ width: '30px', height: '2px', backgroundColor: '#005921' }}></span>
             </div>
-            <h2 className="mb-3 display-8 fw-bolder text-dark" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="mb-3 t-title text-dark" data-aos="fade-up" data-aos-delay="100">
               Leur expérience <span style={{ color: '#005921' }}>Móva</span> en vidéo
             </h2>
             <p className="mx-auto text-muted fs-6" style={{ maxWidth: '600px' }} data-aos="fade-up" data-aos-delay="200">

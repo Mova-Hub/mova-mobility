@@ -68,7 +68,7 @@ const Contact = () => {
                 </span>
                 <span style={{ width: '20px', height: '2px', backgroundColor: '#005921' }}></span>
               </div>
-              <h1 className="mb-4 display-6 fw-semibold text-dark">Parlons de votre prochain <span style={{ color: '#005921' }}>trajet</span></h1>
+              <h1 className="mb-4 t-display text-dark">Parlons de votre prochain <span style={{ color: '#005921' }}>trajet</span></h1>
               <p className="text-muted fs-5">
                 Une question sur nos forfaits ou besoin d'une solution sur mesure ? Notre équipe est à votre disposition pour vous accompagner.
               </p>
@@ -85,7 +85,7 @@ const Contact = () => {
             {/* Left Column: Contact Info & Trust */}
             <div className="col-lg-5" data-aos="fade-right">
               <div className="pe-lg-5">
-                <h3 className="mb-5 fw-semibold text-dark">Nos coordonnées</h3>
+                <h3 className="mb-5 t-heading text-dark">Nos coordonnées</h3>
                 
                 <div className="gap-4 mb-5 d-flex align-items-start">
                   <div className="shadow-sm contact-icon-box">
@@ -276,7 +276,7 @@ const Contact = () => {
                style={{ backgroundColor: '#f9fafb', borderColor: '#e5e7eb' }}>
             
             <div className="text-center text-md-start">
-              <h4 className="mb-2 fw-bolder text-dark">Une urgence ou une question spécifique ?</h4>
+              <h4 className="mb-2 t-heading text-dark">Une urgence ou une question spécifique ?</h4>
               <p className="mb-0 text-muted">Nos conseillers vous répondent directement de vive voix.</p>
             </div>
 
