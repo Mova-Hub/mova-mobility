@@ -66,7 +66,48 @@ function toJob(dto) {
     benefits: dto.benefits || [],
     status: dto.status || "draft",
     createdAt: dto.created_at,
+    // The API withholds the amounts when the salary is not disclosed.
+    salaryDisclosed: Boolean(dto.salary_disclosed),
+    salaryMin: dto.salary_min ?? null,
+    salaryMax: dto.salary_max ?? null,
+    salaryCurrency: dto.salary_currency || "XAF",
+    salaryPeriod: dto.salary_period || null,
+    seniority: dto.seniority || null,
+    experienceYears: dto.experience_years ?? null,
+    openings: dto.openings ?? 1,
+    closesAt: dto.closes_at || null,
+    // When the offer was opened, not drafted. Older offers may lack it.
+    publishedAt: dto.published_at || dto.created_at || null,
+    applyEmail: dto.apply_email || null,
+    isClosedToApplications: Boolean(dto.is_closed_to_applications),
   };
+}
+
+export const SENIORITY = [
+  { value: "intern", label: "Stagiaire" },
+  { value: "junior", label: "Junior" },
+  { value: "mid", label: "Confirmé" },
+  { value: "senior", label: "Senior" },
+  { value: "lead", label: "Lead" },
+];
+
+export const SALARY_PERIODS = [
+  { value: "hour", label: "par heure" },
+  { value: "day", label: "par jour" },
+  { value: "month", label: "par mois" },
+  { value: "year", label: "par an" },
+];
+
+/** "350 000 – 500 000 XAF par mois", or null when not disclosed. */
+export function formatSalary(job) {
+  if (!job?.salaryDisclosed || (job.salaryMin == null && job.salaryMax == null)) return null;
+  const fmt = (n) => new Intl.NumberFormat("fr-FR").format(Number(n));
+  const cur = job.salaryCurrency === "XAF" ? "FCFA" : job.salaryCurrency;
+  const period = job.salaryPeriod ? ` ${getLabel(SALARY_PERIODS, job.salaryPeriod)}` : "";
+  if (job.salaryMin != null && job.salaryMax != null && Number(job.salaryMin) !== Number(job.salaryMax)) {
+    return `${fmt(job.salaryMin)} – ${fmt(job.salaryMax)} ${cur}${period}`;
+  }
+  return `${fmt(job.salaryMin ?? job.salaryMax)} ${cur}${period}`;
 }
 
 /* -------------------------------- Client ---------------------------------- */
@@ -86,6 +127,14 @@ async function getPublicJobs(params) {
   };
 }
 
+// Une offre ouverte, pour sa propre page (ROUTE PUBLIQUE).
+// Une offre fermée, en brouillon ou expirée répond 404, comme si elle n'existait pas.
+async function getPublicJob(id) {
+  const res = await api.get(`/public/jobs/${encodeURIComponent(id)}`);
+  const dto = res.data?.data ?? res.data;
+  return toJob(dto);
+}
+
 // Soumettre une candidature (ROUTE PUBLIQUE)
 // formData doit être un objet FormData (multipart/form-data) contenant le CV
 async function applyToJob(formData) {
@@ -94,8 +143,12 @@ async function applyToJob(formData) {
 }
 
 export default { 
-  getPublicJobs, 
+  getPublicJobs,
+  getPublicJob,
   applyToJob,
+  formatSalary,
+  SENIORITY,
+  SALARY_PERIODS,
   getLabel,
   WORK_MODES,
   CONTRACT_TYPES,

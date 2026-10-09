@@ -1,16 +1,29 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
+import { CONTACT_CATEGORIES, sendContact, errorMessage } from '../api/site';
 
+const EMPTY_FORM = {
+  name: '',
+  email: '',
+  phone: '',
+  category: 'other',
+  subject: '',
+  message: '',
+  // Honeypot, hidden from people. Bots fill it in and the API drops them.
+  website: '',
+};
+
+/*
+ * The message becomes a support ticket in the back office, and the team's
+ * answer is e-mailed back. The reference shown on success is the ticket's, so
+ * a visitor who calls can be found quickly.
+ */
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: 'General',
-    message: ''
-  });
+  const [formData, setFormData] = useState(EMPTY_FORM);
 
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [reference, setReference] = useState(null);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,13 +33,20 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
-    
-    // Simulate API call
-    setTimeout(() => {
+    setError('');
+    const category = CONTACT_CATEGORIES.find((c) => c.value === formData.category);
+    try {
+      const ref = await sendContact({
+        ...formData,
+        subject: formData.subject.trim() || category?.label || 'Demande depuis le site',
+      });
+      setReference(ref);
       setStatus('success');
-      setFormData({ name: '', email: '', phone: '', subject: 'General', message: '' });
-      setTimeout(() => setStatus('idle'), 5000);
-    }, 1500);
+      setFormData(EMPTY_FORM);
+    } catch (err) {
+      setError(errorMessage(err));
+      setStatus('error');
+    }
   };
 
   return (
@@ -162,18 +182,58 @@ const Contact = () => {
                         placeholder="+242 -- --- -- --" 
                       />
                     </div>
+                    <div className="col-md-6">
+                      <label className="form-label small fw-bold text-dark" htmlFor="contact-category">Votre demande concerne</label>
+                      <select
+                        id="contact-category"
+                        name="category"
+                        value={formData.category}
+                        onChange={handleChange}
+                        className="form-select custom-input"
+                      >
+                        {CONTACT_CATEGORIES.map((c) => (
+                          <option key={c.value} value={c.value}>{c.label}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="col-md-6">
+                      <label className="form-label small fw-bold text-dark" htmlFor="contact-subject">Sujet</label>
+                      <input
+                        id="contact-subject"
+                        type="text"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        className="form-control custom-input"
+                        placeholder="Ex. : Location d'un bus pour un mariage"
+                        maxLength={160}
+                      />
+                    </div>
                     <div className="col-12">
-                      <label className="form-label small fw-bold text-dark">Votre message</label>
-                      <textarea 
+                      <label className="form-label small fw-bold text-dark" htmlFor="contact-message">Votre message</label>
+                      <textarea
+                        id="contact-message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        className="form-control custom-input" 
-                        rows="5" 
-                        placeholder="Comment pouvons-nous vous aider ?" 
+                        className="form-control custom-input"
+                        rows="5"
+                        placeholder="Comment pouvons-nous vous aider ?"
+                        minLength={10}
+                        maxLength={5000}
                         required
                       ></textarea>
                     </div>
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      value={formData.website}
+                      onChange={handleChange}
+                      style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, opacity: 0 }}
+                    />
                     <div className="col-12">
                       <button 
                         type="submit" 
@@ -187,9 +247,18 @@ const Contact = () => {
 
                   {/* Feedback Messages */}
                   {status === 'success' && (
-                    <div className="gap-2 mt-4 border-0 alert alert-success rounded-4 d-flex align-items-center">
+                    <div className="gap-2 mt-4 border-0 alert alert-success rounded-4 d-flex align-items-center" role="status">
                       <i className="bi bi-check-circle-fill fs-5"></i>
-                      <span>Votre message a été envoyé avec succès ! Nous vous répondrons sous 24h.</span>
+                      <span>
+                        Message bien reçu. Notre équipe vous répond par e-mail, en général sous 24 h ouvrées.
+                        {reference && <> Votre référence : <strong>{reference}</strong>.</>}
+                      </span>
+                    </div>
+                  )}
+                  {status === 'error' && (
+                    <div className="gap-2 mt-4 border-0 alert alert-danger rounded-4 d-flex align-items-center" role="alert">
+                      <i className="bi bi-exclamation-triangle-fill fs-5"></i>
+                      <span>{error}</span>
                     </div>
                   )}
                 </form>

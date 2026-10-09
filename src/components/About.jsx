@@ -1,5 +1,5 @@
 import React from 'react';
-// (ReservationModal can be kept if you plan to add a booking button here later)
+
 
 function About() {
   return (

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReservationModal from './ReservationModal';
 
 function FAQ() {
     
