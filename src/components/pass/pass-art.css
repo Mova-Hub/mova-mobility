@@ -1,0 +1,40 @@
+/*
+ * The Mova Pass card, matching the app's PassCardFace: ISO/IEC 7810 ID-1
+ * proportions (1.586:1), fixed near-black fill, a green glow top right and an
+ * orange one bottom left. No chip. Sizes are container units, so the card
+ * scales as one object wherever it is placed (page or phone mock).
+ */
+.pa-card {
+  --rx: 0deg; --ry: 0deg; --rz: 0deg; --gx: 30%;
+  aspect-ratio: 1.586; width: 340px; perspective: 1000px; container-type: inline-size;
+}
+.pa-card-face {
+  position: relative; width: 100%; height: 100%; overflow: hidden;
+  border-radius: 5.3cqw; padding: 5.9cqw;
+  display: flex; flex-direction: column; justify-content: space-between;
+  background: #10100f; color: #fafafa;
+  border: 1px solid #2a2a28;
+  transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz));
+  transition: transform .35s cubic-bezier(.2, .7, .2, 1);
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .45), 0 14px 24px -16px rgba(0, 0, 0, .4);
+}
+.pa-card-glow { position: absolute; border-radius: 50%; pointer-events: none; }
+.pa-card-glow.is-top { width: 76cqw; height: 76cqw; top: -44cqw; right: -20cqw; background: rgba(16, 185, 129, .16); }
+.pa-card-glow.is-bottom { width: 65cqw; height: 65cqw; bottom: -41cqw; left: -18cqw; background: rgba(240, 130, 30, .10); }
+.pa-card-top { position: relative; display: flex; justify-content: space-between; align-items: flex-start; }
+.pa-card-logo { width: 24cqw; height: auto; }
+.pa-card-nfc { width: 7.6cqw; height: 7.6cqw; color: #9c9c98; transform: rotate(90deg); }
+.pa-card-number { position: relative; font-size: 5.6cqw; font-weight: 600; letter-spacing: .13em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pa-card-bottom { position: relative; display: flex; justify-content: space-between; align-items: flex-end; gap: 3.5cqw; }
+.pa-card-field { display: flex; flex-direction: column; gap: .9cqw; min-width: 0; }
+.pa-card-field.is-right { align-items: flex-end; }
+.pa-card-label { font-size: 2.65cqw; font-weight: 600; letter-spacing: .12em; color: #9c9c98; white-space: nowrap; }
+.pa-card-value { font-size: 3.8cqw; font-weight: 600; letter-spacing: .03em; white-space: nowrap; }
+.pa-card-status { display: inline-flex; align-items: center; gap: 1.8cqw; font-size: 3.8cqw; font-weight: 600; color: #34d399; }
+.pa-card-status i { width: 2cqw; height: 2cqw; border-radius: 50%; background: #34d399; }
+.pa-card-shine {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent calc(var(--gx) - 25%), rgba(255, 255, 255, .06) var(--gx), transparent calc(var(--gx) + 25%));
+}
+.pa-qr { display: block; width: 100%; height: auto; }
+@media (prefers-reduced-motion: reduce) { .pa-card-face { transition: none; } }

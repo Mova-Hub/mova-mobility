@@ -8,7 +8,7 @@ export const APP_STORE_URL = 'https://apps.apple.com/us/app/mova-mobility/id6762
 export const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.busaccess.client';
 
 /** The section of the home page that shows both store badges. */
-export const DOWNLOAD_SECTION = '/#movapass';
+export const DOWNLOAD_SECTION = '/#application';
 
 /**
  * The best download link for this visitor: the store of their phone, or the
