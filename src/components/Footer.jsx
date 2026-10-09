@@ -155,9 +155,9 @@ function Footer() {
           <div className="mb-3 text-center col-md-6 text-md-start mb-md-0 text-muted small">
             © {new Date().getFullYear()} Móva Mobility. Tous droits réservés.
           </div>
-          <div className="text-center col-md-6 d-flex justify-content-center justify-content-md-end text-muted small">
+          {/* <div className="text-center col-md-6 d-flex justify-content-center justify-content-md-end text-muted small">
             <span>Conçu par <a href="https://koverae.com" target="_blank" rel="noreferrer" className="text-decoration-none fw-semibold hover-primary">Koverae Technologies</a></span>
-          </div>
+          </div> */}
         </div>
       </div>
 
