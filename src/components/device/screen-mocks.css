@@ -47,3 +47,17 @@
   font-size: 5.4cqw; color: #9a9a96;
 }
 .sm-tabbar .is-active { color: #10100f; }
+
+.sm-plans { display: flex; flex-direction: column; gap: 2.4cqw; }
+.sm-plan {
+  display: flex; align-items: center; gap: 3cqw; padding: 3.6cqw 4cqw; border-radius: 4cqw;
+  background: #fff; border: 1.5px solid #ececea;
+}
+.sm-plan.is-picked { border-color: #005921; box-shadow: 0 0 0 1cqw rgba(0, 89, 33, .08); }
+.sm-radio { width: 4.6cqw; height: 4.6cqw; flex-shrink: 0; border-radius: 50%; border: 1.5px solid #c9c9c5; background: #fff; }
+.sm-plan.is-picked .sm-radio, .sm-radio.is-on { border: 1.4cqw solid #005921; }
+.sm-pay-logo { width: 9cqw; height: 9cqw; object-fit: contain; border-radius: 2.4cqw; flex-shrink: 0; }
+.sm-cta {
+  margin-top: auto; margin-bottom: 7cqw; display: block; text-align: center; padding: 4cqw; border-radius: 99px;
+  background: #10100f; color: #fff; font-size: 4cqw; font-weight: 600;
+}

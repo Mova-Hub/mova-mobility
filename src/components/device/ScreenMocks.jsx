@@ -130,7 +130,52 @@ function ActivateMock() {
   );
 }
 
-const MOCKS = { pass: PassMock, passHistory: HistoryMock, eclair: EclairMock, passScan: ActivateMock };
+/*
+ * Choosing a plan. No amounts on purpose: real prices live in the back office
+ * and the app, and a figure drawn here would read as a promise.
+ */
+const PLANS = [
+  ['Hebdomadaire', '7 jours', false],
+  ['Mensuel', '30 jours', true],
+  ['Trimestriel', '90 jours', false],
+];
+
+function PlansMock() {
+  return (
+    <div className="sm">
+      <StatusBar />
+      <div className="sm-body">
+        <p className="sm-back"><i className="bi bi-chevron-left"></i> Mova Pass</p>
+        <p className="sm-title">Choisir une formule</p>
+        <div className="sm-plans">
+          {PLANS.map(([name, length, picked]) => (
+            <div key={name} className={`sm-plan ${picked ? 'is-picked' : ''}`}>
+              <span className="sm-radio" />
+              <span className="sm-item-text"><b>{name}</b><small>Valable {length}</small></span>
+              {picked && <span className="sm-tag">Populaire</span>}
+            </div>
+          ))}
+        </div>
+        <p className="sm-section">Payer avec</p>
+        <div className="sm-panel is-list">
+          <div className="sm-item">
+            <img src="/assets/images/payments/mtn.svg" alt="" className="sm-pay-logo" />
+            <span className="sm-item-text"><b>MTN Mobile Money</b><small>06 ••• •• 32</small></span>
+            <span className="sm-radio is-on" />
+          </div>
+          <div className="sm-item">
+            <img src="/assets/images/payments/airtel.svg" alt="" className="sm-pay-logo" />
+            <span className="sm-item-text"><b>Airtel Money</b><small>Ajouter un numéro</small></span>
+            <span className="sm-radio" />
+          </div>
+        </div>
+        <span className="sm-cta">Continuer</span>
+      </div>
+    </div>
+  );
+}
+
+const MOCKS = { pass: PassMock, passHistory: HistoryMock, eclair: EclairMock, passScan: ActivateMock, passPlans: PlansMock };
 
 /** The drawn screen for a manifest key, or null when there is none. */
 export function ScreenMock({ kind }) {

@@ -30,18 +30,21 @@ const STEPS = [
     title: 'Activez votre carte.',
     text: 'Approchez la carte de votre téléphone : l’app la lit par NFC et la rattache à votre compte. Pas de guichet, pas de formulaire.',
     screen: SCREENS.passScan,
+    chip: { icon: 'bi-broadcast', label: 'Carte détectée' },
   },
   {
     n: '02',
     title: 'Choisissez votre formule.',
     text: 'Les formules disponibles et leurs prix sont affichés dans l’app, avant tout paiement. Payez en MTN MoMo ou Airtel Money.',
     screen: SCREENS.passPlans,
+    chip: { icon: 'bi-check-circle-fill', label: 'Paiement confirmé' },
   },
   {
     n: '03',
     title: 'Montez. C’est tout.',
     text: 'À bord, présentez la carte au contrôleur. La validation prend une seconde, même sans réseau, et apparaît ensuite dans votre historique.',
     screen: SCREENS.pass,
+    chip: { icon: 'bi-check-circle-fill', label: 'Validé · 07:42' },
   },
 ];
 
@@ -50,6 +53,24 @@ const SECURITY = [
   { icon: 'bi-wifi-off', title: 'Contrôle hors ligne', text: 'Le terminal du contrôleur vérifie la signature sans connexion. Le bus ne s’arrête pas pour un réseau capricieux.' },
   { icon: 'bi-slash-circle', title: 'Carte perdue, carte bloquée', text: 'Signalez-la : elle est bloquée immédiatement, et votre abonnement passe sur une nouvelle carte.' },
   { icon: 'bi-eye-slash', title: 'Le minimum sur la carte', text: 'Pas de nom, pas de numéro de téléphone. Le lieu d’une validation est effacé après 90 jours.' },
+];
+
+/*
+ * Payment methods, with the operators' and networks' official marks
+ * (public/assets/images/payments/). Card is Visa and Mastercard together.
+ * Mova Credit wears the Mova logo: it is our own closed-loop credit.
+ */
+const PAYMENTS = [
+  { name: 'MTN Mobile Money', logos: [{ src: '/assets/images/payments/mtn.svg', alt: 'MTN', h: 56 }] },
+  { name: 'Airtel Money', logos: [{ src: '/assets/images/payments/airtel.svg', alt: 'Airtel', h: 56 }] },
+  {
+    name: 'Carte bancaire',
+    logos: [
+      { src: '/assets/images/payments/visa.svg', alt: 'Visa', h: 22 },
+      { src: '/assets/images/payments/mastercard.svg', alt: 'Mastercard', h: 46 },
+    ],
+  },
+  { name: 'Mova Credit', logos: [{ src: '/assets/images/logo/logo.png', alt: 'Mova', h: 30 }] },
 ];
 
 const FAQ = [
@@ -75,7 +96,15 @@ function useActiveSection(ids) {
   return active;
 }
 
-/** The phone stays pinned while the three steps scroll past it. */
+/**
+ * The phone stays pinned while the three steps scroll past it, then leaves
+ * with the section.
+ *
+ * The pinned column is a grid item with `align-self: start`, so its sticky
+ * range is exactly the steps column: it pins when the first step arrives and
+ * is released when the last one has gone, without any scroll listener. The
+ * active step is the one crossing the middle of the viewport.
+ */
 function HowItWorks() {
   const [step, setStep] = useState(0);
   const refs = useRef([]);
@@ -84,11 +113,13 @@ function HowItWorks() {
     if (!('IntersectionObserver' in window)) return undefined;
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) setStep(Number(e.target.dataset.step)); }),
-      { rootMargin: '-45% 0px -45% 0px' },
+      { rootMargin: '-48% 0px -48% 0px' },
     );
     refs.current.forEach((el) => el && io.observe(el));
     return () => io.disconnect();
   }, []);
+
+  const current = STEPS[step];
 
   return (
     <section id="fonctionnement" className="mpp-how">
@@ -98,20 +129,36 @@ function HowItWorks() {
           <h2>Trois gestes.<br /><span>Puis plus rien à penser.</span></h2>
         </header>
         <div className="mpp-how-grid">
-          <div className="mpp-how-steps">
+          <ol className="mpp-how-steps">
             {STEPS.map((s, i) => (
-              <article key={s.n} data-step={i} ref={(el) => { refs.current[i] = el; }} className={`mpp-step ${step === i ? 'is-active' : ''}`}>
-                <span className="mpp-step-n">{s.n}</span>
+              <li key={s.n} data-step={i} ref={(el) => { refs.current[i] = el; }} className={`mpp-step ${step === i ? 'is-active' : ''} ${i < step ? 'is-done' : ''}`}>
+                <span className="mpp-step-dot" aria-hidden="true" />
+                <span className="mpp-step-n">Étape {s.n}</span>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
                 <div className="mpp-step-device">
                   <IPhone11 screen={s.screen} width="min(260px, 64vw)" />
                 </div>
-              </article>
+              </li>
             ))}
-          </div>
+          </ol>
+
           <div className="mpp-how-sticky" aria-hidden="true">
-            <IPhone11 screens={STEPS.map((s) => s.screen)} active={step} width="300px" />
+            <div className="mpp-how-stage">
+              <span className="mpp-how-halo" />
+              <IPhone11 screens={STEPS.map((s) => s.screen)} active={step} width="var(--how-phone)" />
+              <div key={step} className="mpp-how-chip">
+                <i className={`bi ${current.chip.icon}`}></i>{current.chip.label}
+              </div>
+            </div>
+            <div className="mpp-how-caption">
+              <div className="mpp-how-rail">
+                {STEPS.map((s, i) => (
+                  <span key={s.n} className={i < step ? 'is-done' : i === step ? 'is-active' : ''} />
+                ))}
+              </div>
+              <p><span>{current.n}</span> {current.title}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -154,7 +201,7 @@ export default function MovaPassPage() {
         image="/assets/images/movapass/bus-chauffeur.jpg"
       />
 
-      {/* Local navigation, as on a product page. */}
+      {/* Local navigation, as on a product page. It scrolls away with the hero. */}
       <nav className="mpp-subnav" aria-label="Mova Pass">
         <div className="container mpp-subnav-inner">
           <span className="mpp-subnav-title">Mova Pass</span>
@@ -303,12 +350,19 @@ export default function MovaPassPage() {
       <section className="mpp-pay">
         <div className="container" data-aos="fade-up">
           <h2 className="mpp-h2 text-center">Payez avec ce que vous avez déjà.</h2>
-          <div className="mpp-pay-list">
-            <span><i className="bi bi-phone"></i>MTN MoMo</span>
-            <span><i className="bi bi-phone"></i>Airtel Money</span>
-            <span><i className="bi bi-credit-card"></i>Carte</span>
-            <span><i className="bi bi-wallet2"></i>Mova Credit</span>
-          </div>
+          <p className="mpp-pay-lead">Le paiement se fait dans l’app, au moment de choisir votre formule. Vous recevez la confirmation et le reçu tout de suite.</p>
+          <ul className="mpp-pay-list">
+            {PAYMENTS.map((p) => (
+              <li key={p.name} className="mpp-pay-item">
+                <span className="mpp-pay-logos">
+                  {p.logos.map((l) => (
+                    <img key={l.src} src={l.src} alt={l.alt} style={{ height: l.h }} loading="lazy" />
+                  ))}
+                </span>
+                <span className="mpp-pay-name">{p.name}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

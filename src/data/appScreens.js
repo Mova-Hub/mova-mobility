@@ -81,6 +81,7 @@ export const SCREENS = {
   },
   passPlans: {
     src: `${DIR}/pass-formules.png`,
+    mock: 'passPlans',
     title: 'Formules',
     icon: 'bi-grid',
     alt: 'Choix d’une formule d’abonnement',

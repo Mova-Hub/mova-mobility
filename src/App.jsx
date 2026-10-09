@@ -38,7 +38,12 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen site-wrap" style={{ overflowX: 'hidden' }}>{/* Valeurs par défaut pour tout le site */}
+    <div className="flex flex-col min-h-screen site-wrap" style={{ overflowX: 'clip' }}>
+      {/*
+        overflow-x: clip, not hidden. Hidden turns this wrapper into a scroll
+        container, and every position: sticky inside it (the /movapass sub-nav,
+        its pinned phone) then sticks to a box that never scrolls, i.e. not at all.
+      */}
       <SEO
         title="Accueil"
         description="Móva Mobility, c’est la liberté de se déplacer autrement. Réservez un bus pour vos événements ou trajets quotidiens."
