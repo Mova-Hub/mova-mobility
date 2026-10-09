@@ -50,7 +50,7 @@ export default function AboutStory() {
         <div className="container abs-split">
           <div data-aos="fade-up">
             <span className="abs-eyebrow">Ce que Mova change</span>
-            <h2 className="abs-h2">Se déplacer en ville, <span>sans les tracas habituels.</span></h2>
+            <h2 className="abs-h2">Se déplacer en groupe, <span>sans les tracas habituels.</span></h2>
             <ul className="abs-ba">
               {BEFORE_AFTER.map(([before, after]) => (
                 <li key={before}>
